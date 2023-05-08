@@ -1,4 +1,4 @@
-## Lifecycle hooks Execution Ordered list
+ ## Lifecycle hooks Execution Ordered list
 
 🔄 ->  Repeated
 1️⃣ ->  Executed only once
