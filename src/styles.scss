@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+	--base-color: #12445e;
+	--base-color-hover: #2b6787;
+}
+
+
+* {
+	box-sizing: border-box;
+	font-family: 'Ubuntu', sans-serif;
+}

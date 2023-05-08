@@ -1,0 +1,59 @@
+#parent {
+	ul {
+		list-style-type: none;
+		padding: 0;
+
+		li {
+			div {
+				padding: 10px;
+				cursor: pointer;
+				position: relative;
+				mix-blend-mode: difference;
+
+
+				#author {
+					transition: 0.3s;
+					position: absolute;
+					right: 5px;
+					bottom: 0;
+					text-decoration: none;
+					color: white;
+					font-weight: 0;
+					// font-size: 4px;
+					// color: gray;
+					color: transparent;
+					// mix-blend-mode: difference;
+					font-size: 40px;
+					// color: var(--base-color);
+
+					&:hover {
+						color: rgba(255, 255, 255, 0.612);
+					}
+				}
+
+				&:hover {
+					#author {
+						color: var(--base-color-hover);
+						mix-blend-mode: screen;
+						font-size: 40px;
+						right: -20%;
+
+						&:hover {
+							text-decoration: underline;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.active-nav-link {
+		background-color: var(--base-color);
+		color: white;
+		transition: 0.3s;
+
+		&:hover {
+			background-color: var(--base-color-hover);
+		}
+	}
+}
