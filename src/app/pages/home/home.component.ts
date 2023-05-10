@@ -10,6 +10,10 @@ import { ISidebarNavItems } from 'src/app/helpers/ui/sidebar-nav/sidebar-nav';
 export class HomeComponent {
 	applications: ISidebarNavItems[] = [
 		{
+			routing: ['Rough', '/app/rough'],
+			author: ['ankit', ''],
+		},
+		{
 			routing: ['Todo', '/app/todo'],
 			author: ['ankit', 'https://github.com/findankit'],
 		}

@@ -1,4 +1,19 @@
+#main {
+	display: flex;
+
+	#parent {
+		flex: 2;
+	}
+
+	#container {
+		flex: 10;
+		padding: 10px;
+	}
+}
+
 #parent {
+	height: 100vh;
+
 	ul {
 		list-style-type: none;
 		padding: 0;
@@ -10,38 +25,8 @@
 				position: relative;
 				mix-blend-mode: difference;
 
-
 				#author {
-					transition: 0.3s;
-					position: absolute;
-					right: 5px;
-					bottom: 0;
-					text-decoration: none;
-					color: white;
-					font-weight: 0;
-					// font-size: 4px;
-					// color: gray;
-					color: transparent;
-					// mix-blend-mode: difference;
-					font-size: 40px;
-					// color: var(--base-color);
-
-					&:hover {
-						color: rgba(255, 255, 255, 0.612);
-					}
-				}
-
-				&:hover {
-					#author {
-						color: var(--base-color-hover);
-						mix-blend-mode: screen;
-						font-size: 40px;
-						right: -20%;
-
-						&:hover {
-							text-decoration: underline;
-						}
-					}
+					display: none;
 				}
 			}
 		}
@@ -54,6 +39,36 @@
 
 		&:hover {
 			background-color: var(--base-color-hover);
+		}
+		
+		#author {
+			display: block !important;
+			transition: 0.3s;
+			position: absolute;
+			right: 5px;
+			bottom: 0;
+			text-decoration: none;
+			color: white;
+			font-weight: 0;
+			color: transparent;
+			font-size: 40px;
+
+			&:hover {
+				color: rgba(255, 255, 255, 0.612);
+			}
+		}
+
+		&:hover {
+			#author {
+				color: var(--base-color-hover);
+				mix-blend-mode: screen;
+				font-size: 40px;
+				right: -20%;
+
+				&:hover {
+					text-decoration: underline;
+				}
+			}
 		}
 	}
 }

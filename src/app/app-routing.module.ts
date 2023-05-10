@@ -5,13 +5,23 @@ import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
 	{
+		path: '',
+		pathMatch: 'full',
+		redirectTo: 'app',
+	},
+	{
 		path: 'app',
 		component: HomeComponent,
 		children: [
 			{
 				path: 'todo',
 				loadChildren: () => import('./pages/todo/todo.module').then(m => m.TodoModule),
-			}
+			},
+			{
+				path: 'rough',
+				loadChildren: () => import('./pages/rough/rough.module').then(m => m.RoughModule),
+			},
+
 		]
 	}
 ];
