@@ -12,11 +12,12 @@ export class RoughPageComponent {
 		private activeRoute: ActivatedRoute,
 	) { }
 
+	paramsAndValues = '';
+
 	ngOnInit() {
 		this.activeRoute.queryParams.subscribe((params: any) => {
-			if (params.episodeStatus) {
-
-			}
+			this.paramsAndValues = Object.entries(params).map(el => el.join(': ')).join(', ').trim() || this.paramsAndValues;
+			this.router.navigate([], {  queryParamsHandling: '' }); //#1
 		})
 	}
 }

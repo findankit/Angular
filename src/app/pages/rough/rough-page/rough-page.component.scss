@@ -1,0 +1,12 @@
+.ng-select {
+	border-radius: 100px;
+	// padding: 10px;
+	ng-select {
+		border: 1px solid var(--base-color-hover);
+		padding: 10px;
+		&:focus {
+			border: 1px solid var(--base-color);
+		}
+	}
+	position: relative;
+}

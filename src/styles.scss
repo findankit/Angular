@@ -12,4 +12,48 @@ body {
 * {
 	box-sizing: border-box;
 	font-family: 'Ubuntu', sans-serif;
+
+	
+	&::-webkit-scrollbar {
+		width: 20px;
+	}
+	
+	&::-webkit-scrollbar-track {
+		background-color: transparent;
+	}
+	
+	&::-webkit-scrollbar-thumb {
+		background-image: url('https://i.ibb.co/1RHr40z/248599.png'); 
+		background-repeat: no-repeat, no-repeat;
+		background-size: 20px;
+	}
+
 }
+
+/* GRID SYSTEM */
+$grid-columns: 12;
+@for $i from 1 through $grid-columns {
+  .col-#{$i} { // col-1 to col-12
+    width: percentage($i / $grid-columns); // Calculate the width as a percentage
+  }
+}
+
+
+.ng-dropdown-panel{
+	position: absolute;
+	top: 110%;
+	left: 0;
+	background: white;
+	max-height: 100px;
+	overflow-y: auto;
+	box-shadow: 1px 1px 10px var(--base-color);
+	.ng-option {
+		padding: 10px;
+		transition: 0.3s;
+		&:hover {
+			background: var(--base-color-hover);
+			color: white;
+		}
+	}
+}
+

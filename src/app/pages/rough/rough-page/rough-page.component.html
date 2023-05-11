@@ -1,3 +1,36 @@
 <h1>Different Inputs</h1>
 
-<ng-select></ng-select>
+<div class="col-12">
+	<h3>ng-select</h3>
+	<article>
+		<dl>
+			<dt>Note:</dt>
+			<dd>Options of <strong>ng-select</strong> are accissible from global css. In our case style.scss at root of <strong>app folder</strong>.</dd>
+		</dl>
+	</article>
+	<div class="ng-select col-6">
+		<ng-select placeholder="Search Here" [editableSearchTerm]="true">
+			<ng-option>Anupam Khair kya hi kare</ng-option>
+			<ng-option>Ankit Maurya</ng-option>
+			<ng-option>Suresh Raina</ng-option>
+			<ng-option>Mahindar Singh Dhoni</ng-option>
+		</ng-select>
+	</div>
+</div>
+
+
+<div>
+	<h3>Other things happening on this page. #1</h3>
+	<ol>
+		<li>
+			<span>
+				Enter any query string in current url. They will be printed here <input type="text" disabled  [(ngModel)]="paramsAndValues" [style.width]="paramsAndValues.length > 20 ? paramsAndValues.length+'ch' : 'auto'"> and cleared from url.
+			</span>
+			<dl>
+				<dt>Useful Scenario:</dt>
+				<dd>- Redirect to a url where query params are needed to be used as query string</dd>
+				<dd>- But you wan't to keep url clean. So save those query strings and then clear from url without redirecting.</dd>
+			</dl>
+		</li>
+	</ol>
+</div>
