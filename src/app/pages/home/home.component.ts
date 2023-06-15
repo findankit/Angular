@@ -11,11 +11,17 @@ export class HomeComponent {
 	applications: ISidebarNavItems[] = [
 		{
 			routing: ['Rough', '/app/rough'],
-			author: ['ankit', ''],
+			// author: ['ankit', ''],
+			navChild: [
+				{
+					routing: ['Template Driven Forms', '/template-forms'],
+
+				}
+			]
 		},
 		{
 			routing: ['Todo', '/app/todo'],
-			author: ['ankit', 'https://github.com/findankit'],
+			// author: ['ankit', 'https://github.com/findankit'],
 		}
 	]
 }

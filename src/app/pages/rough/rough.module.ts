@@ -5,11 +5,13 @@ import { RoughRoutingModule } from './rough-routing.module';
 import { RoughPageComponent } from './rough-page/rough-page.component';
 import { FormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { RoughComponent } from './rough/rough.component';
 
 
 @NgModule({
   declarations: [
-    RoughPageComponent
+    RoughPageComponent,
+    RoughComponent
   ],
   imports: [
     CommonModule,

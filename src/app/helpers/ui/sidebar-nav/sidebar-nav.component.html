@@ -8,6 +8,13 @@
 					</span>
 					<a id="author" title="App author" [href]="item.author?.[1]">{{item.author?.[0]}}</a>
 				</div>
+				<div class="options">
+					<ul>
+						<li *ngFor="let child of item.navChild">
+							{{child.routing[0]}}
+						</li>
+					</ul>
+				</div>
 			</li>
 		</ul>
 	</div>
