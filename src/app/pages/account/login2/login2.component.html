@@ -1,0 +1,13 @@
+<div class="parent">
+	<form #form="ngForm" (submit)="login(form)">
+		<app-validation-message>
+			<input appInput [(ngModel)]="model.email" name="email" type="email" placeholder="Email" required email>
+		</app-validation-message>
+		<app-validation-message>
+			<input appInput type="password" [(ngModel)]="model.password" name="password" placeholder="Password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" minlength="8">
+		</app-validation-message>
+		<div class="action">
+			<button type="submit">Sign In</button>
+		</div>
+	</form>
+</div>

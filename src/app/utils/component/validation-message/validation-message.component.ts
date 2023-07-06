@@ -1,4 +1,4 @@
-import { Component, ContentChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, ContentChild, ElementRef, AfterViewInit, Renderer2 } from '@angular/core';
 import { InputDirective } from '../../directive/input.directive';
 import { FormControl, NgControl } from '@angular/forms';
 
@@ -25,6 +25,8 @@ export class ValidationMessageComponent{
 	@ContentChild(NgControl) control!: FormControl;
 	@ContentChild(InputDirective, {read: ElementRef}) input!: ElementRef;
 
+	constructor(private renderer: Renderer2) {}
+
 	message = '';
 	errorCount = 0;
 
@@ -32,7 +34,11 @@ export class ValidationMessageComponent{
 	}
 	
 	ngAfterContentInit() {
-		this.control.statusChanges.subscribe(event => {
+		// console.log(`---.`, this.control);
+		
+		this.control.statusChanges?.subscribe(event => {
+			console.log(event);
+			
 			let _e = this.control.errors;
 			let errors = Object.keys(_e || {});
 			this.errorCount = errors.length;
@@ -48,6 +54,10 @@ export class ValidationMessageComponent{
 					this.message = '';
 				}
 			})
+
+			if(this.control.invalid) {
+
+			}
 		})
 	}
 }

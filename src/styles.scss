@@ -9,6 +9,19 @@ input {
 	}
 }
 
+@mixin center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
 body {
 	margin: 0;
+	// font-family: 'Poppins', sans-serif;
+	font-family: 'Fasthand', cursive;
+	
+	width: 100vw;
+	height: 100vh;
+	@include center;
 }
