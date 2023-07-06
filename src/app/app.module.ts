@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/account/login/login.component';
 import { ValidateInputComponent } from './helper/core/validate-input/validate-input.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { UtilsModule } from './utils/utils.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { ValidateInputComponent } from './helper/core/validate-input/validate-in
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+	ReactiveFormsModule,
+	UtilsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

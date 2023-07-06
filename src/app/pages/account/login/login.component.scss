@@ -1,13 +1,42 @@
-form {
-	border: 1px solid red;
+@mixin center {
 	display: flex;
-	flex-flow: column;
 	justify-content: center;
-	// align-items: center;
-	* {
-		flex: 1;
-		margin: 5px 0;
-		padding: 10px;
-		width: 300px;
+	align-items: center;
+}
+
+.parent {
+	width: 100vw;
+	height: 100vh;
+	@include center;
+
+	form {
+		min-width: 300px;
+		display: flex;
+		flex-flow: column;
+
+		input, button {
+			margin: 10px 0;
+		}
+
+		input {
+			padding: 10px;
+
+			&[type='button'] {
+				width: 50%;
+			}
+		}
+
+		.action {
+			@include center;
+			button {
+				padding: 8px 20px;
+				border-radius: 5px;
+				border: 1px solid black;
+			}
+		}
 	}
+}
+
+input {
+	width: 100%;
 }

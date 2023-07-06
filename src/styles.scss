@@ -1,5 +1,5 @@
 input {
-	&:not(button) {
+	&:not([type='button']):not([type='submit']) {
 		border-radius: 10px;
 		border: 1px solid black;
 	}
@@ -7,4 +7,8 @@ input {
 		border: 1px solid red;
 		box-shadow: 0 0 4px red;
 	}
+}
+
+body {
+	margin: 0;
 }

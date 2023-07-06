@@ -1,9 +1,13 @@
-<form>
-	<app-validate-input>
-		<input type="email" placeholder="Email">
-	</app-validate-input>
-	<br/>
-	<input type="password" placeholder="Password">
-	<br/>
-	<button>Submit</button>
-</form>
+<div class="parent">
+	<form [formGroup]="formGroup" (submit)="login()">
+		<app-validation-message>
+			<input appInput type="email" placeholder="Email" formControlName="email">
+		</app-validation-message>
+		<app-validation-message>
+			<input type="password" placeholder="Password" formControlName="password">
+		</app-validation-message>
+		<div class="action">
+			<button type="submit">Sign In</button>
+		</div>
+	</form>
+</div>
