@@ -8,7 +8,11 @@ const routes: Routes = [
 			{
 				path: 'account',
 				loadChildren: () => import('./pages/account/account.module').then(e => e.AccountModule)
-			}
+			},
+			{
+				path: 'topics',
+				loadChildren: () => import('./pages/topics/topics.module').then(e => e.TopicsModule)
+			},
 		]
 	}
 ];

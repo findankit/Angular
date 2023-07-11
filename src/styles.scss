@@ -13,15 +13,24 @@ input {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	height: 100%;
+}
+
+* {
+	box-sizing: border-box;
+	font-family: 'Fasthand', cursive;
 }
 
 
 body {
 	margin: 0;
 	// font-family: 'Poppins', sans-serif;
-	font-family: 'Fasthand', cursive;
 	
 	width: 100vw;
 	height: 100vh;
+	overflow: hidden;
+	// @include center;
+}
+.center {
 	@include center;
 }

@@ -1,0 +1,19 @@
+<div class="topic-parent center">
+	 <div class="filters"></div>
+	<div class="topics">
+		<div class="topic" *ngFor="let topic of topics">
+			<ng-container *ngFor="let _i of ['', '', '', '', ]; let i = index;">
+				<div [class]="'topic-border topic-border-'+i"></div>
+			</ng-container>
+			<div class="icon-parent">
+				<div class="icon">
+					<app-icons [type]="'topic-'+topic.name"></app-icons>
+				</div>
+			</div>
+			<div class="details">
+				<div class="name">{{topic.display_name || topic.name}}</div>
+			</div>
+		</div>
+	</div>
+	
+</div>
