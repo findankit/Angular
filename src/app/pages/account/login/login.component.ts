@@ -13,14 +13,21 @@ export class LoginComponent {
 	) {}
 
 	formGroup = this.fb.group({
-		email: ['', {
+		email: ['abc', {
+			validators: [Validators.required, Validators.email]
+		}],
+		date: ['2020-07-10', {
 			validators: [Validators.required, Validators.email]
 		}],
 		password: ['', {validators: [Validators.required, Validators.minLength(12), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)]}]
 	});
 
+	ngOnInit() {
+		console.log(this.formGroup.controls.email);
+	}
+
 	login() {
-		alert(this.formGroup.valid);
+
 	}
 
 }

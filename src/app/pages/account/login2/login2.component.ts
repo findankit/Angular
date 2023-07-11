@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm, Validators } from '@angular/forms';
+import { validateNgForm } from 'src/app/service/common/ng-form';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,10 @@ export class Login2Component {
 	model = new LoginModel();
 
 	login(form: NgForm) {
+		validateNgForm(form);
+		if(form.invalid) return;
+
+		
 	}
 }
 
