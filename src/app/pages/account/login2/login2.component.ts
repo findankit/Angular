@@ -10,6 +10,7 @@ import { validateNgForm } from 'src/app/service/common/ng-form';
 export class Login2Component {
 
 	constructor(
+		 
 	) {}
 
 	model = new LoginModel();

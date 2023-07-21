@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { TopicModel } from 'src/app/service/topics/topic';
+import { TopicService } from 'src/app/service/topics/topic.service';
 
 @Component({
   selector: 'app-topics',
@@ -6,22 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./topics.component.scss']
 })
 export class TopicsComponent {
-	topics: TopicModel[] = [
-		{
-			name: 'payment',
-			display_name: 'Payment'
-		}
-	]
+	constructor(
+		private service: TopicService,
+	) {}
+	topics = this.service.topics;
 }
 
-
-export class TopicModel {
-	name!: string;
-	display_name?: string;
-	constructor(obj?: TopicModel) {
-		if(obj) {
-			this.name = obj.name;
-			this.display_name = obj.display_name;
-		}
-	}
-}
