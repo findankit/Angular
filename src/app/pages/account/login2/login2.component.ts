@@ -18,8 +18,6 @@ export class Login2Component {
 	login(form: NgForm) {
 		validateNgForm(form);
 		if(form.invalid) return;
-
-		
 	}
 }
 

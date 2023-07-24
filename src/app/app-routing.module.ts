@@ -13,6 +13,10 @@ const routes: Routes = [
 				path: 'topics',
 				loadChildren: () => import('./pages/topics/topics.module').then(e => e.TopicsModule)
 			},
+			{
+				path: 'forms',
+				loadChildren: () => import('./pages/forms/forms.module').then(m => m.FormModule)
+			}
 		]
 	}
 ];

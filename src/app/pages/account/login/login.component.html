@@ -1,10 +1,10 @@
 <div class="parent">
 	<form [formGroup]="formGroup" (submit)="login()">
 		<app-validation-message>
-			<input type="email" placeholder="Email" formControlName="email">
+			<input class="round" type="email" placeholder="Email" formControlName="email">
 		</app-validation-message>
 		<app-validation-message>
-			<input type="password" placeholder="Password"  formControlName="password">
+			<input class="round" type="password" placeholder="Password"  formControlName="password">
 		</app-validation-message>
 		<input type="date" formControlName="date">
 		<div class="action">

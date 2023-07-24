@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { ValidateInputComponent } from './helper/core/validate-input/validate-input.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UtilsModule } from './utils/utils.module';
+import { ComponentModule } from './pages/component/component.module';
 
 @NgModule({
 	declarations: [
@@ -16,7 +17,7 @@ import { UtilsModule } from './utils/utils.module';
 		BrowserModule,
 		AppRoutingModule,
 		ReactiveFormsModule,
-		UtilsModule
+		UtilsModule,
 	],
 	providers: [],
 	bootstrap: [ AppComponent ]

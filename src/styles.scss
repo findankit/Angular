@@ -1,4 +1,4 @@
-input {
+input.round {
 	&:not([type='button']):not([type='submit']) {
 		border-radius: 10px;
 		border: 1px solid black;
@@ -18,7 +18,8 @@ input {
 
 * {
 	box-sizing: border-box;
-	font-family: 'Fasthand', cursive;
+	// font-family: 'Fasthand', cursive;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 
@@ -33,4 +34,10 @@ body {
 }
 .center {
 	@include center;
+}
+
+.error {
+	border: 1px solid red;
+	box-shadow: 0 4px red;
+	
 }
