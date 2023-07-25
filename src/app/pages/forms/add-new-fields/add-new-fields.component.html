@@ -1,11 +1,10 @@
 <h3>Form 1</h3>
-
 <div class="parent">
 	<div class="form1">
 		<form (submit)="submit(form)" #form="ngForm">
 			<ng-container *ngFor="let todo of model.data; let i = index;">
 				<app-validation-message>
-					<app-new-field appInput #multiChildInput ngModel name="todoComponent" [todo]="todo" [id]="i" (onDelete)="deleteTodo($event)"></app-new-field>
+					<app-new-field appInput #multiChildInput ngModel name="todoComponent" [todo]="todo" (onDelete)="deleteTodo(i, todo)"></app-new-field>
 				</app-validation-message>
 			</ng-container>
 			<button (click)="addTodo($event)" >Add More+</button>

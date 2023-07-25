@@ -7,6 +7,8 @@ import { ValidateInputComponent } from './helper/core/validate-input/validate-in
 import { ReactiveFormsModule } from '@angular/forms';
 import { UtilsModule } from './utils/utils.module';
 import { ComponentModule } from './pages/component/component.module';
+import { UrlPrefixInterceptor } from './utils/interceptor/url-prefix.interceptor';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
 	declarations: [
@@ -18,8 +20,15 @@ import { ComponentModule } from './pages/component/component.module';
 		AppRoutingModule,
 		ReactiveFormsModule,
 		UtilsModule,
+		HttpClientModule,
 	],
-	providers: [],
+	providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: UrlPrefixInterceptor,
+      multi: true
+    },
+	],
 	bootstrap: [ AppComponent ]
 })
 export class AppModule { }

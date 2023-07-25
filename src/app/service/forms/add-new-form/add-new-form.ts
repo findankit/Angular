@@ -1,6 +1,6 @@
 
 export class TodoModel {
-	id?: number | null = null;
+	_id: string | null = null;
 	todo!: string;
 	endDate?: Date | string;
 	status!: todoStatus;

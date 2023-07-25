@@ -4,6 +4,13 @@ import { NgForm } from "@angular/forms";
 interface Output {
 	invalid: boolean;
 }
+class Options {
+	/**
+	 * true: validate all form element
+	 * false: stop when found any error
+	 */
+	stopOnError: boolean = false;
+}
 export function validateNgForm(form: NgForm | null, queryListArr?: QueryList<ElementRef<HTMLInputElement>>[]): Output {
 	// debugger;
 	let out = {invalid: false};

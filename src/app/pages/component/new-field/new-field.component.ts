@@ -19,8 +19,7 @@ import { AddNewFormService } from 'src/app/service/forms/add-new-form/add-new-fo
 })
 export class NewFieldComponent extends BaseControlValueAccessor<TodoModel> {
 	@Input() todo!: TodoModel;
-	@Input() id!: number;
-	@Output() onDelete = new EventEmitter<number>;
+	@Output() onDelete = new EventEmitter<any>;
 
 	constructor(
 		private service: AddNewFormService
@@ -31,7 +30,7 @@ export class NewFieldComponent extends BaseControlValueAccessor<TodoModel> {
 	}
 
 	delete() {
-		this.onDelete.emit(this.id);
+		this.onDelete.emit();
 	}
 
 	@ViewChild('form')form!: NgForm;
