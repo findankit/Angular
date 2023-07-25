@@ -9,6 +9,11 @@ import { UtilsModule } from './utils/utils.module';
 import { ComponentModule } from './pages/component/component.module';
 import { UrlPrefixInterceptor } from './utils/interceptor/url-prefix.interceptor';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { LayoutModule } from './pages/layout/layout.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
+
 
 @NgModule({
 	declarations: [
@@ -21,6 +26,10 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 		ReactiveFormsModule,
 		UtilsModule,
 		HttpClientModule,
+		LayoutModule,
+		BrowserAnimationsModule,
+		MatIconModule,
+		// RouterModule,
 	],
 	providers: [
     {

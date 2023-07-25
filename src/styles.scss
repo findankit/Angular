@@ -1,3 +1,6 @@
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+
 input.round {
 	&:not([type='button']):not([type='submit']) {
 		border-radius: 10px;
@@ -27,9 +30,9 @@ body {
 	margin: 0;
 	// font-family: 'Poppins', sans-serif;
 	
-	width: 100vw;
-	height: 100vh;
-	overflow: hidden;
+	// width: 100vw;
+	// height: 100vh;
+	// overflow: hidden;
 	// @include center;
 }
 .center {

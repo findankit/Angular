@@ -1,0 +1,16 @@
+<div class="item">
+	<div class="parent" routerLinkActive="parent-active">
+		<div class="item-heading" (click)="expand=!expand">
+			<span>{{option.name}}</span>
+			<ng-container *ngIf="option.child?.length">
+				<mat-icon *ngIf="!expand">expand_more</mat-icon>
+				<mat-icon *ngIf="expand">expand_less</mat-icon>
+			</ng-container>
+		</div>
+		<div class="children" [class.expand]="expand">
+			<div class="child-item" *ngFor="let child of option.child">
+				<a [routerLink]="child[1]" routerLinkActive="active">{{child[0]}}</a>
+			</div>
+		</div>
+	</div>
+</div>

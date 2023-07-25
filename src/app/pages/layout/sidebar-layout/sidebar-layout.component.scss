@@ -1,0 +1,22 @@
+$iconSize: 30px;
+.example-container {
+  width: 100vw;
+  // border: 1px solid #555;
+	background: rgb(229, 229, 229);
+	.example-sidenav {
+		min-width: 250px;
+		max-width: 300px;
+		padding: 10px;
+	}
+	.action {
+		color: gray;
+		cursor: pointer;
+		font-size: $iconSize;
+		width: $iconSize;
+		height: $iconSize;
+		&:hover {
+			color: black;
+			transition: 0.3s;
+		}
+	}
+}

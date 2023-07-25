@@ -1,0 +1,65 @@
+$c00: rgba(12, 105, 142, 0.088);
+$c0: rgba(12, 105, 142, 0.268);
+$c11: rgba(12, 105, 142, 0.373);
+$c1: rgba(12, 105, 142, 0.49);
+$c2: rgba(12, 92, 124, 0.773);
+$c3: rgb(12, 105, 142);
+
+$g1: rgba(120, 120, 120, 0.46);
+$g2: rgba(120, 120, 120, 0.726);
+$g3: rgb(120, 120, 120);
+
+.item {
+	margin-bottom: 2px;
+	.parent {
+		cursor: pointer;
+		.item-heading {
+			display: flex;
+			padding: 10px;
+			align-items: center;
+			transition: 0.3s;
+			background: $g1;
+
+			&:hover {
+				background: $g3;
+				color: white;
+			}
+		}
+
+		.children {
+			max-height: 0;
+			overflow: hidden;
+			transition: 0.3s;
+			color: white;
+			background: $c00;
+
+			.child-item {
+				a {
+					display: block;
+					padding: 10px;
+					text-decoration: none;
+					color: black;
+					transition: 0.3s;
+					&:hover {
+						background: $c3;
+						color: white;
+					}
+				}
+			}
+		}
+
+		.expand {
+			max-height: 500px;
+		}
+		.active {
+			background: $c0;
+			color: black;
+		}
+	}
+	.parent-active {
+		.item-heading {
+			background: $g3;
+			color: white;
+		}
+	}
+}

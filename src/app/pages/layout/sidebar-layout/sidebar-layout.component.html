@@ -1,0 +1,19 @@
+<mat-drawer-container class="example-container" [style.height]="height">
+	<mat-drawer #drawer class="example-sidenav" mode="side" [opened]="toggleMenu$.value">
+		<div *ngIf="toggleMenu$.value">
+			<mat-icon class="openSidebar action" (click)="toggleMenu()">close</mat-icon>
+		</div>
+		<hr>	
+		<nav>
+			<div *ngFor="let item of sidebarMenuItems">
+				<app-nav-dropdown [option]="item" (click)="menuItemClick(item)" ></app-nav-dropdown>
+			</div>
+		</nav>
+  </mat-drawer>
+	<mat-drawer-content>
+		<div *ngIf="!toggleMenu$.value">
+			<mat-icon class="openSidebar action" (click)="toggleMenu()">apps</mat-icon>
+		</div>
+		<router-outlet></router-outlet>
+	</mat-drawer-content>
+</mat-drawer-container>

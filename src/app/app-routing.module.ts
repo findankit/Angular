@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { SidebarLayoutComponent } from './pages/layout/sidebar-layout/sidebar-layout.component';
 
 const routes: Routes = [
 	{
@@ -8,6 +9,7 @@ const routes: Routes = [
 	},
 	{
 		path: '',
+		component: SidebarLayoutComponent,
 		children: [
 			{
 				path: 'topics',
@@ -18,7 +20,7 @@ const routes: Routes = [
 				loadChildren: () => import('./pages/forms/forms.module').then(m => m.FormModule)
 			}
 		]
-	}
+	},
 ];
 
 @NgModule({
