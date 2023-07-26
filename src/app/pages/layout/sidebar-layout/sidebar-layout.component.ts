@@ -1,6 +1,7 @@
 import { Component, ElementRef, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { BehaviorSubject, debounceTime, fromEvent, map } from 'rxjs';
 import { NavDropdownComponent, NavDropdownOption } from '../nav-dropdown/nav-dropdown.component';
+import { LayoutService } from 'src/app/service/layout/layout.service';
 
 @Component({
   selector: 'app-sidebar-layout',
@@ -11,6 +12,12 @@ export class SidebarLayoutComponent {
   showDropdown = false;
 	height = '';
 	toggleMenu$ = new BehaviorSubject(true);
+
+
+	constructor(
+		private service: LayoutService,
+	) {}
+
 	toggleMenu() {
 		let value = !this.toggleMenu$.value;
 		localStorage.setItem('toggleMenu$', value.toString());
@@ -35,15 +42,7 @@ export class SidebarLayoutComponent {
     this.showDropdown = !this.showDropdown;
   }
 
-	sidebarMenuItems: NavDropdownOption[]  = [
-		{
-			name: 'Todos',
-			child:
-			[
-				['Todo List', '/forms/add-new-field'],
-			]
-		},
-	]
+	sidebarMenuItems = this.service.sidebarMenu;
 
 	@ViewChildren('navdropdown') navdropdown!: QueryList<NavDropdownComponent>;
 	menuItemClick(event: NavDropdownOption) {

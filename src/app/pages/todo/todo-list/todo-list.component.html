@@ -1,0 +1,27 @@
+<h3>Todos</h3>
+<div class="actions">
+	<strong>Actions: </strong>
+	<span (click)="editTodos()" class="actionButton fl-jus-cen">Toggle Edit&nbsp;<mat-icon class="toggle-status" *ngIf="editMode$.value; else uncheck;">radio_button_checked</mat-icon>
+	</span>
+	<ng-template #uncheck>
+		<mat-icon class="toggle-status">radio_button_unchecked</mat-icon>
+	</ng-template>
+</div>
+
+<div class="parent">
+	<div class="form1">
+		<form (submit)="submit(form)" #form="ngForm">
+			<ng-container *ngFor="let todo of model.data; let i = index;">
+				<app-validation-message class="todo-item">
+					<app-todo  appInput #multiChildInput ngModel name="todoComponent" [todo]="todo" (onDelete)="deleteTodo(i, todo)"></app-todo>
+				</app-validation-message>
+			</ng-container>
+			<div class="actions">
+				<button (click)="addTodo($event)" class="actionButton">Add More+</button>
+				<button type="submit"  class="actionButton">Save</button>
+			</div>
+		</form>
+	</div>
+</div>
+
+<!-- <div *ngIf="showData">{{model.data | json}}</div> -->

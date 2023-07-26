@@ -1,0 +1,38 @@
+<form #form="ngForm" [class.non-editable]="!isEditing" (keydown.enter)="update(form)">
+	<div class="actions">
+		<!-- <button (click)="delete()">delete</button> -->
+		<mat-icon (click)="delete()">delete_forever</mat-icon>
+		<!-- <button (click)="toggleEdit()" *ngIf="!isEditing; else ubpdatebutton;">Edit</button> -->
+		<mat-icon>visibility</mat-icon>
+		<mat-icon (click)="toggleEdit()" *ngIf="!isEditing; else ubpdatebutton;">edit</mat-icon>
+		<ng-template #ubpdatebutton>
+			<mat-icon (click)="update(form)">save</mat-icon>
+		</ng-template>
+	</div>
+	<div>
+		<label>Todo</label>
+		<app-validation-message *ngIf="isEditing; else todoname;">
+			<input #inputelement type="text" placeholder="todo" [(ngModel)]="todo.todo" name="todo" appInput required>
+		</app-validation-message>
+		<ng-template #todoname>
+			<span class="placeholder" (click)="toggleEdit()">
+				{{todo.todo || 'n/a'}}
+			</span>
+		</ng-template>
+	</div>
+	<div>
+		<label>Status</label>
+		<app-validation-message *ngIf="isEditing; else statusvalue;">
+			<select #inputelement [(ngModel)]="todo.status" name="status" required>
+				<ng-container *ngFor="let option of todoOptions">
+					<option [value]="option.status">{{option.status}}</option>
+				</ng-container>
+			</select>
+		</app-validation-message>
+		<ng-template #statusvalue>
+			<span class="placeholder" (click)="toggleEdit()">
+				{{todo.status || 'n/a'}}
+			</span>
+		</ng-template>
+	</div>
+</form>

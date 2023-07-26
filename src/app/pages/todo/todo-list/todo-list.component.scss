@@ -1,0 +1,38 @@
+.actions {
+	padding: 10px;
+	display: flex;
+	gap: 20px;
+
+	// justify-content: right;
+	>.actionButton {
+		color: gray;
+		cursor: pointer;
+
+		&:hover {
+			color: black;
+		}
+	}
+
+	.actionButton {
+		mat-icon {
+			font-size: 16px;
+			padding-top: 2px;
+			text-decoration: none;
+		}
+	}
+}
+
+.parent {
+	.todo-item {
+		display: block;
+	}
+
+	.todo-item:nth-child(odd) {
+		background: rgba(128, 128, 128, 0.241);
+	}
+
+	.todo-item:nth-child(even) {
+		background: rgba(128, 128, 128, 0.036);
+	}
+
+}
