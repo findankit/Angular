@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { BehaviorSubject, debounceTime, fromEvent, map } from 'rxjs';
-import { NavDropdownOption } from '../nav-dropdown/nav-dropdown.component';
+import { NavDropdownComponent, NavDropdownOption } from '../nav-dropdown/nav-dropdown.component';
 
 @Component({
   selector: 'app-sidebar-layout',
@@ -37,33 +37,20 @@ export class SidebarLayoutComponent {
 
 	sidebarMenuItems: NavDropdownOption[]  = [
 		{
-			name: 'Abc',
+			name: 'Todos',
 			child:
 			[
-				['new field', '/forms/add-new-field'],
-				['topic', '/topics'],
-			]
-		},
-		{
-			name: 'Dev',
-			child:
-			[
-				['new field', '/forms/add-new-field2'],
-				['topic', '/topics1'],
-			]
-		},
-		{
-			name: 'Jkl',
-			child:
-			[
-				['jkl field', '/forms/add-new-field1'],
-				['topic', '/topic2'],
+				['Todo List', '/forms/add-new-field'],
 			]
 		},
 	]
 
-	selectedMenuItem = '';
+	@ViewChildren('navdropdown') navdropdown!: QueryList<NavDropdownComponent>;
 	menuItemClick(event: NavDropdownOption) {
-		this.selectedMenuItem = event.name;
+		this.navdropdown.forEach(el => {
+			if(el.option.name !== event.name) {
+				el.expand = false;
+			}
+		})
 	}
 }

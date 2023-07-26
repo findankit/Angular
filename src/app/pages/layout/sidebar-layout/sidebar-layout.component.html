@@ -6,7 +6,7 @@
 		<hr>	
 		<nav>
 			<div *ngFor="let item of sidebarMenuItems">
-				<app-nav-dropdown [option]="item" (click)="menuItemClick(item)" ></app-nav-dropdown>
+				<app-nav-dropdown [option]="item" (click)="menuItemClick(item)" #navdropdown></app-nav-dropdown>
 			</div>
 		</nav>
   </mat-drawer>
