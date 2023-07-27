@@ -15,7 +15,9 @@ import { TodoComponent } from '../todo/todo.component';
 })
 export class TodoListComponent {
 
-
+	get showAddButton() {
+		return Object.keys(this.bulkUpdateObj).length || this.model.data.some(el => !el._id)
+	}
 	constructor(
 		public service: TodoService,
 	) { }
@@ -41,7 +43,6 @@ export class TodoListComponent {
 		if (formcheck.invalid) return;
 
 		let updateData = Object.values(this.bulkUpdateObj);
-		// let createList = this.model.data.filter(el => !el._id).concat(updateData.filter(el => !el._id));
 		let createList = this.model.data.filter(el => !el._id);
 
 		if (updateData.length) {
@@ -50,6 +51,7 @@ export class TodoListComponent {
 				.subscribe(event => {
 					this.service.editMode$.next(false);
 					this.bulkUpdateObj = {};
+					if(!createList.length) this.getTodoList();
 				})
 		}
 
@@ -57,13 +59,8 @@ export class TodoListComponent {
 			this.service.createTodoList(createList)
 				.pipe(catchError(v => of(v.error)))
 				.subscribe(event => {
-					// alert(event);
-					// this.service.editMode$.next(false);
 					this.bulkUpdateObj = {};
 					this.multiChildInput.forEach(el => {
-						console.log(el);
-						this.bulkUpdateObj = {};
-						// createList
 						this.getTodoList();
 					})
 				});
@@ -76,9 +73,7 @@ export class TodoListComponent {
 
 			}
 		})
-		debugger;
 		this.model.data.splice(index, 1);
-		debugger;
 	}
 
 

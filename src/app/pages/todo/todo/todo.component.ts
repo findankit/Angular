@@ -44,7 +44,7 @@ export class TodoComponent extends BaseControlValueAccessor<TodoModel> {
 
 	ngAfterViewInit() {
 		this.myform.valueChanges?.subscribe((event: TodoModel) => {
-			this.onValueChange.emit(this.todo);
+			if(this.todo._id)this.onValueChange.emit(this.todo);
 		})
 	}
 

@@ -16,8 +16,8 @@
 				</app-validation-message>
 			</ng-container>
 			<div class="actions">
-				<button (click)="addTodo($event)" class="actionButton">Add More+</button>
-				<button type="submit"  class="actionButton">Save</button>
+				<button (click)="addTodo($event)" class="actionButton">Add Todo</button>
+				<button type="submit"  class="actionButton" *ngIf="showAddButton">Save</button>
 			</div>
 		</form>
 	</div>
