@@ -1,0 +1,17 @@
+<p>table works!</p>
+{{data | json}}
+
+<table>
+		<tr>
+			<th *ngFor="let data of data?.[0] | keyvalue">
+				<span>{{data.key}}</span>
+			</th>
+		</tr>
+
+		<tr *ngFor="let item of data">
+			<td *ngFor="let data of item | keyvalue">
+				<span>{{modifyByType(data.value)}}</span>
+			</td>
+		</tr>
+</table>
+

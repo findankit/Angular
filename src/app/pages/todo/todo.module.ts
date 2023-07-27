@@ -7,19 +7,23 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { FormsModule } from '@angular/forms';
 import { UtilsModule } from 'src/app/utils/utils.module';
 import { MatIconModule } from '@angular/material/icon';
+import { TodoCategoryComponent } from './todo-category/todo-category.component';
+import { CoreModule } from '../core/core.module';
 
 
 @NgModule({
   declarations: [
     TodoComponent,
-    TodoListComponent
+    TodoListComponent,
+    TodoCategoryComponent
   ],
   imports: [
     CommonModule,
     TodoRoutingModule,
 		FormsModule,
 		UtilsModule,
-		MatIconModule
+		MatIconModule,
+		CoreModule
   ]
 })
 export class TodoModule { }

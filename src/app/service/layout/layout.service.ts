@@ -13,6 +13,7 @@ export class LayoutService {
 			name: 'Todos',
 			child:
 			[
+				['Categories', '/todo/category'],
 				['Todo List', '/todo/list'],
 			]
 		},
