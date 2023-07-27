@@ -7,13 +7,12 @@
 		<mat-icon class="toggle-status">radio_button_unchecked</mat-icon>
 	</ng-template>
 </div>
-
 <div class="parent">
 	<div class="form1">
 		<form (submit)="submit(form)" #form="ngForm">
 			<ng-container *ngFor="let todo of model.data; let i = index;">
 				<app-validation-message class="todo-item">
-					<app-todo  appInput #multiChildInput ngModel name="todoComponent" [todo]="todo" (onDelete)="deleteTodo(i, todo)"></app-todo>
+					<app-todo  appInput #multiChildInput ngModel name="todoComponent" [todo]="todo" (onDelete)="deleteTodo(i, todo)" (onValueChange)="todoDataChange($event, i)"></app-todo>
 				</app-validation-message>
 			</ng-container>
 			<div class="actions">

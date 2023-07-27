@@ -1,4 +1,4 @@
-import { ElementRef, QueryList } from "@angular/core";
+import { Component, ElementRef, QueryList, Type } from "@angular/core";
 import { NgForm } from "@angular/forms";
 
 interface Output {
@@ -11,7 +11,7 @@ class Options {
 	 */
 	stopOnError: boolean = false;
 }
-export function validateNgForm(form: NgForm | null, queryListArr?: QueryList<ElementRef<HTMLInputElement>>[]): Output {
+export function validateNgForm(form: NgForm | null, queryListArr?: QueryList<any>[]): Output {
 	// debugger;
 	let out = {invalid: false};
 
@@ -23,7 +23,6 @@ export function validateNgForm(form: NgForm | null, queryListArr?: QueryList<Ele
 	queryListArr?.map(queryList => {
 		queryList?.forEach((ref, i) => {
 			if(out.invalid) return;
-			console.log(i, ref);
 			let form = (ref as any)?.form;
 			if(form) {
 				validate(form);

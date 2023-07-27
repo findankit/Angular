@@ -6,17 +6,18 @@ import { ResponseDataList } from 'src/app/service/common/response';
 import { TodoModel } from 'src/app/service/forms/add-new-form/add-new-form';
 import { AddNewFormService } from 'src/app/service/forms/add-new-form/add-new-form.service';
 import { TodoService } from 'src/app/service/todo/todo.service';
+import { TodoComponent } from '../todo/todo.component';
 
 @Component({
-  selector: 'app-todo-list',
-  templateUrl: './todo-list.component.html',
-  styleUrls: ['./todo-list.component.scss']
+	selector: 'app-todo-list',
+	templateUrl: './todo-list.component.html',
+	styleUrls: [ './todo-list.component.scss' ]
 })
 export class TodoListComponent {
 
 
 	constructor(
-		private service: TodoService,
+		public service: TodoService,
 	) { }
 
 	model = new ResponseDataList<TodoModel>();
@@ -34,28 +35,53 @@ export class TodoListComponent {
 		})
 	}
 
-	@ViewChildren('multiChildInput') multiChildInput!: QueryList<ElementRef<HTMLInputElement>>;
+	@ViewChildren('multiChildInput') multiChildInput!: QueryList<TodoComponent>;
 	submit(form: NgForm) {
 		let formcheck = validateNgForm(form, [ this.multiChildInput ]);
 		if (formcheck.invalid) return;
-		this.service.createTodoList(this.model.data.filter(el => !el._id))
-			.pipe(catchError(v => of(v.error)))
-			.subscribe(event => {
-				alert(event);
-			});
+
+		let updateData = Object.values(this.bulkUpdateObj);
+		// let createList = this.model.data.filter(el => !el._id).concat(updateData.filter(el => !el._id));
+		let createList = this.model.data.filter(el => !el._id);
+
+		if (updateData.length) {
+			this.service.bulkUpdateTodo(updateData)
+				.pipe(catchError(v => of(v.error)))
+				.subscribe(event => {
+					this.service.editMode$.next(false);
+					this.bulkUpdateObj = {};
+				})
+		}
+
+		if (createList.length) {
+			this.service.createTodoList(createList)
+				.pipe(catchError(v => of(v.error)))
+				.subscribe(event => {
+					// alert(event);
+					// this.service.editMode$.next(false);
+					this.bulkUpdateObj = {};
+					this.multiChildInput.forEach(el => {
+						console.log(el);
+						this.bulkUpdateObj = {};
+						// createList
+						this.getTodoList();
+					})
+				});
+		}
 	}
 
 	deleteTodo(index: number, todo: TodoModel) {
-		let deletedItem = this.model.data.splice(index, 1);
 		if (todo._id) this.service.deleteTodo(todo._id).subscribe(event => {
 			if (event.success) {
 
 			}
 		})
+		debugger;
 		this.model.data.splice(index, 1);
+		debugger;
 	}
 
-	
+
 	addTodo(event: Event) {
 		event.preventDefault();
 		let newTodo = new TodoModel();
@@ -65,5 +91,10 @@ export class TodoListComponent {
 	editMode$ = this.service.editMode$;
 	editTodos() {
 		this.service.editMode$.next(!this.service.editMode$.value);
+	}
+
+	bulkUpdateObj: { [ key: number ]: TodoModel } = {};
+	todoDataChange(todo: TodoModel, i: number) {
+		this.bulkUpdateObj[ i ] = todo;
 	}
 }

@@ -36,4 +36,8 @@ export class TodoService {
 	updateTodo(payload: TodoModel) {
 		return this.http.patch<Response>(`/todo/${payload._id}`, payload);
 	}
+
+	bulkUpdateTodo(payload: TodoModel[]) {
+		return this.http.patch<Response>(`/todo/bulk-update`, payload);
+	}
 }

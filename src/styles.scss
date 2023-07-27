@@ -6,6 +6,7 @@ input.round {
 		border-radius: 10px;
 		border: 1px solid black;
 	}
+
 	&.error {
 		border: 1px solid red;
 		box-shadow: 0 0 4px red;
@@ -29,12 +30,13 @@ input.round {
 body {
 	margin: 0;
 	// font-family: 'Poppins', sans-serif;
-	
+
 	// width: 100vw;
 	// height: 100vh;
 	// overflow: hidden;
 	// @include center;
 }
+
 .center {
 	@include center;
 }
@@ -42,11 +44,37 @@ body {
 .error {
 	border: 1px solid red;
 	box-shadow: 0 4px red;
-	
+
 }
 
 
 .fl-jus-cen {
 	display: flex;
 	justify-content: center;
+}
+
+button {
+	border: 1px solid gray;
+	background: rgba(128, 128, 128, 0.244);
+	padding: 10px;
+	transition: 0.2s;
+
+	&:hover {
+		background: gray;
+		color: white !important;
+	}
+
+	&:active {
+		background: rgba(145, 63, 63, 0.799);
+		color: white !important;
+	}
+}
+
+input.ng-invalid {
+	filter: drop-shadow(2px 4px 6px red);
+	&::placeholder {
+		color: red !important;
+	}
+	border-color: red !important;
+	// border: 1px solid red;
 }

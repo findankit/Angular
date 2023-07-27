@@ -18,9 +18,11 @@ import { TodoService } from 'src/app/service/todo/todo.service';
 	]
 })
 export class TodoComponent extends BaseControlValueAccessor<TodoModel> {
-
+	@ViewChild('form') myform!: NgForm;
 	@Input() todo!: TodoModel;
 	@Output() onDelete = new EventEmitter<any>;
+	@Output() onSave = new EventEmitter<any>;
+	@Output() onValueChange = new EventEmitter<TodoModel>;
 
 	editToggleCount = 1;
 	isEditing = false;
@@ -28,7 +30,7 @@ export class TodoComponent extends BaseControlValueAccessor<TodoModel> {
 	constructor(
 		private service: TodoService,
 	) {super()}
-
+	
 	ngOnInit() {
 		this.service.editMode$.subscribe((event: boolean) => {
 			if(!this.todo._id) {
@@ -37,6 +39,12 @@ export class TodoComponent extends BaseControlValueAccessor<TodoModel> {
 			}
 			this.editToggleCount++;
 			this.isEditing = event;
+		})
+	}
+
+	ngAfterViewInit() {
+		this.myform.valueChanges?.subscribe((event: TodoModel) => {
+			this.onValueChange.emit(this.todo);
 		})
 	}
 
@@ -50,17 +58,22 @@ export class TodoComponent extends BaseControlValueAccessor<TodoModel> {
 		this.onDelete.emit();
 	}
 
+	_saved() {
+		this.onSave.emit();
+	}
 	update(form: NgForm) {
 		let validate = validateNgForm(form);
 		if(validate.invalid) return;
-		
+
 		if(this.todo._id) {
 			this.service.updateTodo(this.todo).subscribe(event => {
 				this.toggleEdit();
+				this._saved();
 			});
 		} else {
 			this.service.createTodoList([this.todo]).subscribe(event => {
 				this.toggleEdit();
+				this._saved();
 			});
 		}
 	}
