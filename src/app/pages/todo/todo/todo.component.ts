@@ -49,7 +49,6 @@ export class TodoComponent extends BaseControlValueAccessor<TodoModel> {
 	}
 
 	toggleEdit() {
-		// if(this.service.editMode$.value) return;
 		this.editToggleCount = 1;
 		this.isEditing = !this.isEditing;
 	}

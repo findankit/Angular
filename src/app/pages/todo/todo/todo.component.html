@@ -1,13 +1,6 @@
 <form #form="ngForm" [class.non-editable]="!isEditing" (keydown.enter)="update(form)">
-	<div class="actions">
-		<!-- <button (click)="delete()">delete</button> -->
-		<mat-icon (click)="delete()">delete_forever</mat-icon>
-		<!-- <button (click)="toggleEdit()" *ngIf="!isEditing; else ubpdatebutton;">Edit</button> -->
-		<mat-icon>visibility</mat-icon>
-		<mat-icon (click)="toggleEdit()" *ngIf="!isEditing; else ubpdatebutton;">edit</mat-icon>
-		<ng-template #ubpdatebutton>
-			<mat-icon (click)="update(form)">save</mat-icon>
-		</ng-template>
+	<div>
+		<app-table-actions (onDelete)="delete()" (onUpdate)="toggleEdit()" (onSave)="update(form)" [isEditing]="isEditing"></app-table-actions>
 	</div>
 	<div>
 		<label>Todo</label>

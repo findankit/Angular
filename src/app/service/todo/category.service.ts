@@ -13,6 +13,8 @@ export class CategoryService {
 		let res = new ResponseDataList<CategoryModel>();
 		let data = new CategoryModel();
 		data.name = 'temp';
+		res.data.push(JSON.parse(JSON.stringify(data)));
+		data.name = 'hi';
 		res.data.push(data);
 		return of(res);
 	}

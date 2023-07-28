@@ -1,0 +1,39 @@
+$c0: rgba(12, 105, 142, 0.268);
+
+table {
+	text-align: left;
+	min-width: 100%;
+	.row {
+		// color: red;
+		.col {
+			padding: 10px;
+			min-width: 100px;
+			max-width: 300px;
+		}
+
+	}
+	.header-row {
+		background: $c0;
+		.col {
+			span {
+				cursor: pointer;
+			}
+		}
+	}
+	.data-row {
+		&:nth-child(even) {
+			background: rgba(128, 128, 128, 0.652);
+		}
+		&:nth-child(odd) {
+			background: rgba(128, 128, 128, 0.258);
+		}
+		.col {
+			font-size: 0.8em;
+			white-space: nowrap;
+			span {
+				display: block;
+				overflow: hidden;
+			}
+		}
+	}
+}

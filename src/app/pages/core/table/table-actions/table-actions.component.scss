@@ -1,0 +1,23 @@
+
+.parent {
+	display: flex;
+	gap: 5px;
+	padding: 5px;
+	mat-icon {
+		display: inline-block;
+		border: 1px solid gray;
+		color: gray;
+		border-radius: 100px;
+		padding: 0px;
+		transition: 0.3s;
+		cursor: pointer;
+		height: 1.2em;
+		width: 1.2em;
+		padding: 2px;
+		&:hover {
+			padding: 3px;
+			background: black;
+			color: white;
+		}
+	}
+}

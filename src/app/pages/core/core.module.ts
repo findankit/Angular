@@ -8,7 +8,7 @@ import { TableModule } from './table/table.module';
   declarations: [],
   imports: [
     CommonModule,
-		TableModule
+		TableModule,
   ],
 	exports: [
 		TableModule

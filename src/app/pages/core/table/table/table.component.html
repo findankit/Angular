@@ -1,16 +1,19 @@
-<p>table works!</p>
-{{data | json}}
-
+{{subscribedToEvents}}
 <table>
-		<tr>
-			<th *ngFor="let data of data?.[0] | keyvalue">
+		<tr class="header row header-row">
+			<th class="col header-col" *ngFor="let data of data?.[0] | keyvalue">
 				<span>{{data.key}}</span>
 			</th>
+			<th *ngIf="config.showActions">
+				Action(s)
+			</th>
 		</tr>
-
-		<tr *ngFor="let item of data">
-			<td *ngFor="let data of item | keyvalue">
-				<span>{{modifyByType(data.value)}}</span>
+		<tr class="row data-row" *ngFor="let item of data">
+			<td class="col data-col" *ngFor="let data of item | keyvalue">
+				<span [title]="data.value | transform">{{data.value | transform}}</span>
+			</td>
+			<td *ngIf="config.showActions">
+				<app-table-actions [config]="config.tableActionConfig" (onSubscribe)="subscribedToEvents=true" (onDelete)="null" [data]="item"></app-table-actions>
 			</td>
 		</tr>
 </table>
