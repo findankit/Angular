@@ -1,4 +1,3 @@
-{{subscribedToEvents}}
 <table>
 		<tr class="header row header-row">
 			<th class="col header-col" *ngFor="let data of data?.[0] | keyvalue">
@@ -7,6 +6,7 @@
 			<th *ngIf="config.showActions">
 				Action(s)
 			</th>
+			<ng-content select="head"></ng-content>
 		</tr>
 		<tr class="row data-row" *ngFor="let item of data">
 			<td class="col data-col" *ngFor="let data of item | keyvalue">

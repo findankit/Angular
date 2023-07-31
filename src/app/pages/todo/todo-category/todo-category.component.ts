@@ -1,30 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { ResponseDataList } from 'src/app/service/common/response';
 import { CategoryModel } from 'src/app/service/todo/category';
 import { CategoryService } from 'src/app/service/todo/category.service';
 import { TableConfig } from '../../core/table/table/table.component';
 
 @Component({
-  selector: 'app-todo-category',
-  templateUrl: './todo-category.component.html',
-  styleUrls: ['./todo-category.component.scss']
+	selector: 'app-todo-category',
+	templateUrl: './todo-category.component.html',
+	styleUrls: [ './todo-category.component.scss' ]
 })
 export class TodoCategoryComponent {
 	constructor(
 		private service: CategoryService,
-	) {}
+	) { }
 
 	model = new ResponseDataList<CategoryModel>();
 	tableConfig = new TableConfig();
+	showModal = false;
 
 	ngOnInit() {
 		this.getCategoryList();
-		let a = this.tableConfig.tableActionConfig;
-		this.tableConfig.showActions = true;
 	}
 
-	deleting(data: any) {
-		console.log(data);
+	deleting(data: CustomEvent<CategoryModel>) {
+		console.log(data.detail);
 		alert('deleted');
 	}
 

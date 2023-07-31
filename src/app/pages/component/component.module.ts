@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NewFieldComponent } from './new-field/new-field.component';
 import { FormsModule } from '@angular/forms';
 import { UtilsModule } from 'src/app/utils/utils.module';
+import { ModalsModule } from './modals/modals.module';
 
 
 
@@ -13,10 +14,12 @@ import { UtilsModule } from 'src/app/utils/utils.module';
   imports: [
     CommonModule,
 		FormsModule,
-		UtilsModule
+		UtilsModule,
+		ModalsModule,
   ],
 	exports: [
-		NewFieldComponent
+		NewFieldComponent,
+		ModalsModule
 	]
 })
 export class ComponentModule { }

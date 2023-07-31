@@ -16,15 +16,13 @@ export class TableConfig {
 export class TableComponent {
 	@Input() data: {[key: string]: any}[] = [];
 	@Input() schema!: any;
-	@Input() config = new TableConfig();
-	
+	@Input() config!: TableConfig;
+
 	@Output() onDelete = new EventEmitter<any>;
 	@Output() onUpdate = new EventEmitter<any>;
 	@Output() onSave = new EventEmitter<any>;
 	@Output() onView = new EventEmitter<any>;
 	@Output() onSubscribe = new EventEmitter<any>;
-
-	
 
 	protected subscribedToEvents = false;
 

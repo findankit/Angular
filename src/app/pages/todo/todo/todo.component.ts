@@ -49,11 +49,12 @@ export class TodoComponent extends BaseControlValueAccessor<TodoModel> {
 	}
 
 	toggleEdit() {
+		// debugger;
 		this.editToggleCount = 1;
 		this.isEditing = !this.isEditing;
 	}
 
-	delete() {
+	delete(event: CustomEvent<TodoModel>) {
 		this.onDelete.emit();
 	}
 
@@ -61,6 +62,7 @@ export class TodoComponent extends BaseControlValueAccessor<TodoModel> {
 		this.onSave.emit();
 	}
 	update(form: NgForm) {
+		// debugger;
 		let validate = validateNgForm(form);
 		if(validate.invalid) return;
 

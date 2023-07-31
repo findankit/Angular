@@ -1,2 +1,13 @@
 <h3>Categories</h3>
-<app-table [data]="model.data" (onDelete)="deleting($event)"></app-table>
+<button (click)="showModal = true;">Add Category</button>
+<app-table [data]="model.data" (onDelete)="deleting($event)" [config]="tableConfig">
+	<th class="head">abc</th>
+	<td class="col">def</td>
+</app-table>
+
+<app-vanilla-modal [showModal]="showModal">
+	<form>
+		<input type="text">
+		<button>Create</button>
+	</form>
+</app-vanilla-modal>

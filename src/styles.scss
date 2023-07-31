@@ -71,10 +71,10 @@ button {
 }
 
 input.ng-invalid {
-	filter: drop-shadow(2px 4px 6px red);
+	filter: drop-shadow(0 0 15px red);
 	&::placeholder {
-		color: red !important;
+		color: rgba(255, 0, 0, 0.674) !important;
 	}
-	border-color: red !important;
+	border-color: rgba(255, 0, 0, 0.674) !important;
 	// border: 1px solid red;
 }

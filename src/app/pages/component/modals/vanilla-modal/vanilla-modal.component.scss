@@ -1,0 +1,49 @@
+$c1: rgba(12, 105, 142, 0.49);
+
+
+.grandparent {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 1000;
+	background: $c1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: auto;
+	padding: 10px;
+	// box-sizing: border-box;
+	.parent {
+		width: 50%;
+		height: 60%;
+		background: rgb(201, 201, 201);
+		border-radius: 10px;
+		display: flex;
+		flex-flow: column;
+		min-width: 500px;
+		min-height: 400px;
+		>* {
+			padding: 10px;
+		}
+		.header {
+			flex: 1;
+			display: flex;
+			.title {
+				flex: 8;
+			}
+			.actions {
+				flex: 4;
+				display: flex;
+				flex-direction: row-reverse;
+			}
+		}
+		.content {
+			flex: 10;
+		}
+		.footer {
+			flex: 1;
+		}
+	}
+}

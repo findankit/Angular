@@ -1,10 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output } from '@angular/core';
 
-export type TableActions = 'delete' | 'update' | 'save' | 'view';
-export type TableActionsLoose =  'd' | 'u' | 's' | 'v' | TableActions;
+export type TableActions = 'delete' | 'update' | 'save' | 'view' | 'cancel';
+export type TableActionsLoose =  'd' | 'u' | 's' | 'v' | 'c' | TableActions;
 export class TableActionButtonConfig {
 	enableEditIconToggle: boolean = true;
-	buttons: TableActionsLoose[] = ['d', 'u', 's', 'v']; // initially all buttons are allowed to show, subscribe to respective events to make them visible
+	buttons: TableActionsLoose[] = ['d', 'u', 's', 'v', 'c']; // initially all buttons are allowed to show, subscribe to respective events to make them visible
 }
 
 @Component({
@@ -17,11 +17,17 @@ export class TableActionsComponent {
 	@Input() config: TableActionButtonConfig = new TableActionButtonConfig();
 	@Input() isEditing = false;
 
+	/* Below Output declaration are for accessing $event in parent event subscription */
 	@Output() onDelete = new EventEmitter<any>;
 	@Output() onUpdate = new EventEmitter<any>;
 	@Output() onSave = new EventEmitter<any>;
 	@Output() onView = new EventEmitter<any>;
 	@Output() onSubscribe = new EventEmitter<any>;
+	@Output() onCancel = new EventEmitter<any>;
+
+	constructor(
+		private element: ElementRef,
+	){}
 
 
 	actionGroup: {[key in TableActions]: TableActionsLoose[]} = {
@@ -29,6 +35,7 @@ export class TableActionsComponent {
 		'update': ['u'],
 		'save': ['s'],
 		'view': ['v'],
+		'cancel': ['c'],
 	}
 
 	subscribed = false;
@@ -45,19 +52,32 @@ export class TableActionsComponent {
 		return condition && emitterUsed;
 	}
 
+	dispatch(eventname: string) {
+		this.element.nativeElement.dispatchEvent(new CustomEvent(eventname, {
+			bubbles: true,
+			detail: this.data
+		}))
+	}
+
 	delete() {
-		this.onDelete.emit(this.data);
+		// this.onDelete.emit(this.data);
+		this.dispatch('onDelete');
 	}
 
 	update() {
-		this.onUpdate.emit(this.data);
+		// this.onUpdate.emit(this.data);
+		this.dispatch('onUpdate');
 	}
 
 	save() {
-		this.onSave.emit(this.data);
+		// this.onSave.emit(this.data);
+		this.dispatch('onSave');
 	}
 
 	view() {
-		this.onView.emit(this.data);
+		// this.onView.emit(this.data);
+		this.dispatch('onView');
 	}
+
+	cancel() {this.dispatch('onCancel')}
 }

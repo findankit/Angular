@@ -1,6 +1,6 @@
 <form #form="ngForm" [class.non-editable]="!isEditing" (keydown.enter)="update(form)">
 	<div>
-		<app-table-actions (onDelete)="delete()" (onUpdate)="toggleEdit()" (onSave)="update(form)" [isEditing]="isEditing"></app-table-actions>
+		<app-table-actions (onDelete)="delete($event)" (onUpdate)="toggleEdit()" (onSave)="update(form)" [isEditing]="isEditing" [data]="todo"></app-table-actions>
 	</div>
 	<div>
 		<label>Todo</label>

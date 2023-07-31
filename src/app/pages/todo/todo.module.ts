@@ -9,6 +9,7 @@ import { UtilsModule } from 'src/app/utils/utils.module';
 import { MatIconModule } from '@angular/material/icon';
 import { TodoCategoryComponent } from './todo-category/todo-category.component';
 import { CoreModule } from '../core/core.module';
+import { ComponentModule } from '../component/component.module';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { CoreModule } from '../core/core.module';
 		FormsModule,
 		UtilsModule,
 		MatIconModule,
-		CoreModule
+		CoreModule,
+		ComponentModule
   ]
 })
 export class TodoModule { }
