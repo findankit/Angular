@@ -3,6 +3,9 @@ import { ResponseDataList } from 'src/app/service/common/response';
 import { CategoryModel } from 'src/app/service/todo/category';
 import { CategoryService } from 'src/app/service/todo/category.service';
 import { TableConfig } from '../../core/table/table/table.component';
+import { NgForm } from '@angular/forms';
+import { validateNgForm } from 'src/app/service/common/ng-form';
+import { LayoutService } from 'src/app/service/layout/layout.service';
 
 @Component({
 	selector: 'app-todo-category',
@@ -12,19 +15,37 @@ import { TableConfig } from '../../core/table/table/table.component';
 export class TodoCategoryComponent {
 	constructor(
 		private service: CategoryService,
+		private layoutService: LayoutService,
 	) { }
 
+	category = new CategoryModel();
 	model = new ResponseDataList<CategoryModel>();
 	tableConfig = new TableConfig();
-	showModal = false;
+	private _showModal = false;
+	private defaultShowMenuFlag: boolean | null = null;
+	get showModal() { return this._showModal }
+	set showModal(value) {
+		if (value) {
+			this.defaultShowMenuFlag = localStorage.getItem('toggleMenu$') === 'true' ? true : false;
+			this.layoutService.hideMenu();
+		}
+		else if (this.defaultShowMenuFlag) this.layoutService.showMenu();
+
+		this._showModal = value;
+	}
+	isCreatingParent = false;
 
 	ngOnInit() {
+		// this.defaultShowMenuFlag = this.layoutService.toggleMenu$.value;
 		this.getCategoryList();
 	}
 
 	deleting(data: CustomEvent<CategoryModel>) {
-		console.log(data.detail);
-		alert('deleted');
+		if (data.detail._id) this.service.deleteCategory(data.detail._id).subscribe(event => {
+			if (event.success) {
+				this.getCategoryList();
+			}
+		})
 	}
 
 	getCategoryList() {
@@ -32,4 +53,17 @@ export class TodoCategoryComponent {
 			this.model = event;
 		})
 	}
+
+	createCategory(form: NgForm) {
+		if (!this.showModal) return;
+		let validate = validateNgForm(form);
+		if (validate.invalid) return;
+		this.service.addCategory({ categories: this.category }).subscribe(event => {
+			if (event.success) {
+				this.getCategoryList();
+				this.showModal = false;
+			}
+		})
+	}
+
 }

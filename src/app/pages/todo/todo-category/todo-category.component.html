@@ -5,9 +5,31 @@
 	<td class="col">def</td>
 </app-table>
 
-<app-vanilla-modal [showModal]="showModal">
-	<form>
-		<input type="text">
-		<button>Create</button>
-	</form>
+<app-vanilla-modal [showModal]="showModal" (onCancel)="showModal = false;" label="Add category!">
+	<div class="parent center transition-10">
+		<div class="gap-20 flex fl-fl-col width-per-100">
+			<div class="options">
+				<div class="is-parent-checkbox" *ngIf="model.data.length">
+					<label for="isparent" class="cursor-pointer">Creating Parent Category?</label>
+					<input type="checkbox" id="isparent" [(ngModel)]="isCreatingParent" name="isCreatingParent">
+				</div>
+			</div>
+			<div class="form-parent width-per-100">
+				<form class="flex fl-fl-col gap-5 width-per-100 height-child-input-36" #form="ngForm" (submit)="createCategory(form)">
+					<div class="inputs flex gap-10 flex-wrap" >
+						<app-validation-message class="width-per-45">
+							<input type="text" name="category" [(ngModel)]="category.name" class="width-per-100" placeholder="Category Name" required>
+						</app-validation-message>
+						<app-validation-message class=" width-per-45" *ngIf="model.data.length && !isCreatingParent">
+							<app-ng-select class="" [(ngModel)]="category.parent" name="parent" placeholder="Parent Category" [options]="model.data"></app-ng-select>
+						</app-validation-message>
+					</div>
+					<div class="center">
+						<button class="width-per-50 display-inline-block">Create</button>
+					</div>
+					{{category | json}}
+				</form>
+			</div>
+		</div>
+	</div>
 </app-vanilla-modal>

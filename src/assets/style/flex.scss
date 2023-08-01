@@ -1,0 +1,59 @@
+
+.flex {
+	display: flex;
+}
+
+@for $i from 1 through 12 {
+  .fl-#{$i} {
+    flex: #{$i};
+  }
+}
+
+.fl-dir-right {
+	flex-direction: row-reverse;
+}
+
+.fl-fl-col {
+	flex-flow: column;
+}
+
+/* align-items & justify-content */
+.fl-just-ali-cen {
+	justify-content: center;
+	align-items: center;
+}
+
+.fl-ali-just-cen {
+	justify-content: center;
+	align-items: center;
+}
+
+/* justify-content */
+.fl-just-cen {
+	justify-content: center;
+}
+
+/* align-items */
+.fl-ali-cen {
+	align-items: center;
+}
+
+/* basis */
+@for $i from 1 through 100 {
+	.fl-basis-#{$i} {
+		gap: $i * 1%;
+	}
+}
+
+/* wrap */
+$flex-wrap-values: (
+  'wrap': wrap,
+  'nowrap': nowrap,
+  'wrap-reverse': wrap-reverse
+);
+
+@each $class, $value in $flex-wrap-values {
+  .flex-#{$class} {
+    flex-wrap: $value;
+  }
+}

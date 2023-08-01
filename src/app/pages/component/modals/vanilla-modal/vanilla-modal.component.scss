@@ -32,6 +32,9 @@ $c1: rgba(12, 105, 142, 0.49);
 			display: flex;
 			.title {
 				flex: 8;
+				h4 {
+					margin: 0;
+				}
 			}
 			.actions {
 				flex: 4;

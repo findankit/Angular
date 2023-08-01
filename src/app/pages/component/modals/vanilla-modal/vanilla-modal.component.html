@@ -1,7 +1,9 @@
 <div class="grandparent" *ngIf="showModal">
 	<div class="parent">
 		<div class="header">
-			<div class="title"></div>
+			<div class="title flex fl-ali-cen">
+				<h4>{{label}}</h4>
+			</div>
 			<div class="actions">
 				<app-table-actions (onCancel)="cancel($event)"></app-table-actions>
 			</div>

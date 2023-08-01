@@ -37,6 +37,7 @@ export function validateNgForm(form: NgForm | null, queryListArr?: QueryList<any
 function validate(form: NgForm) {
 	for(let control of Object.values(form.controls)) {
 		control.markAsDirty();
+		control.markAsTouched();
 		control.updateValueAndValidity({onlySelf: true});
 	}
 }

@@ -1,0 +1,18 @@
+$debug-colors: (
+  #ff0000, // Red
+  #00ff00, // Green
+  #0000ff, // Blue
+  #ff00ff, // Magenta
+  #00ffff, // Cyan
+  #ffff00, // Yellow
+  #ff8000, // Orange
+  #8000ff, // Purple
+  #00ff80, // Spring Green
+  #ff0080  // Pink
+);
+
+@for $i from 1 through 20 {
+  .debug-#{$i} {
+    border: 1px solid nth($debug-colors, (($i - 1) % length($debug-colors)) + 1);
+  }
+}

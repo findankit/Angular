@@ -1,0 +1,19 @@
+/*
+ .display-?  	($display)
+ .cursor-?		($cursor)
+*/
+$display-values: block, inline, inline-block, flex, grid, table, none;
+
+@each $value in $display-values {
+	.display-#{$value} {
+		display: #{$value};
+	}
+}
+
+$cursor-styles: pointer, grab, not-allowed, crosshair, move, text, wait, default, e-resize, n-resize, ne-resize, nw-resize, s-resize, se-resize, sw-resize, w-resize, help;
+
+@each $style in $cursor-styles {
+  .cursor-#{$style} {
+    cursor: #{$style};
+  }
+}

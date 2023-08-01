@@ -1,0 +1,12 @@
+
+@for $i from 1 through 100 {
+	.transition-#{$i} {
+		transition: #{$i}s;
+	}
+
+	.transition-hover-#{$i} {
+		&:hover {
+			transition: #{$i}s;
+		}
+	}
+}

@@ -4,6 +4,7 @@ import { NewFieldComponent } from './new-field/new-field.component';
 import { FormsModule } from '@angular/forms';
 import { UtilsModule } from 'src/app/utils/utils.module';
 import { ModalsModule } from './modals/modals.module';
+import { SelectModule } from './select/select.module';
 
 
 
@@ -16,10 +17,12 @@ import { ModalsModule } from './modals/modals.module';
 		FormsModule,
 		UtilsModule,
 		ModalsModule,
+		SelectModule,
   ],
 	exports: [
 		NewFieldComponent,
-		ModalsModule
+		ModalsModule,
+		SelectModule
 	]
 })
 export class ComponentModule { }

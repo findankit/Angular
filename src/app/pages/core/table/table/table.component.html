@@ -1,20 +1,23 @@
-<table>
+<table *ngIf="data.length; else nodatafound;">
 		<tr class="header row header-row">
-			<th class="col header-col" *ngFor="let data of data?.[0] | keyvalue">
-				<span>{{data.key}}</span>
+			<th class="col header-col" *ngFor="let datavalue of data?.[0] | keyvalue">
+				<span>{{datavalue.key | properHeading}}</span>
 			</th>
 			<th *ngIf="config.showActions">
 				Action(s)
 			</th>
 			<ng-content select="head"></ng-content>
 		</tr>
-		<tr class="row data-row" *ngFor="let item of data">
-			<td class="col data-col" *ngFor="let data of item | keyvalue">
-				<span [title]="data.value | transform">{{data.value | transform}}</span>
+		<tr class="row data-row" *ngFor="let datavalue of data">
+			<td class="col data-col" *ngFor="let item of mangeIgnoreColumn(datavalue) | keyvalue">
+				<span [title]="item.value | transform">{{item.value | transform}}</span>
 			</td>
 			<td *ngIf="config.showActions">
-				<app-table-actions [config]="config.tableActionConfig" (onSubscribe)="subscribedToEvents=true" (onDelete)="null" [data]="item"></app-table-actions>
+				<app-table-actions [config]="config.tableActionConfig" (onSubscribe)="subscribedToEvents=true" (onDelete)="null" [data]="datavalue"></app-table-actions>
 			</td>
 		</tr>
 </table>
 
+<ng-template #nodatafound>
+	<p>No Data Found</p>
+</ng-template>

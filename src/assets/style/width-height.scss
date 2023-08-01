@@ -1,0 +1,120 @@
+/* 
+pixels:
+*	.width-child-input-?
+*	.width-2x? -> eg. .width-2x20 => 40px
+	.width-4x? -> eg. .width-4x10 => 40px
+	.width-8x?
+	.. add width .. suppose existing width is 500px ...
+*	.add-width-2x30 -> 500px + (2x30 = 60px) = 560px
+	.. percentage ..
+*	.width-per-?
+
+* same for height/size/width
+*/
+@for $i from 1 through 100 {
+	.width-child-input-#{$i} {
+		input {width: #{$i}px;}
+	}
+	.height-child-input-#{$i} {
+		input {height: #{$i}px;}
+	}
+
+  .width-2x#{$i} {
+    width: #{$i * 2}px;
+  }
+
+  .width-4x#{$i} {
+    width: #{$i * 4}px;
+  }
+
+  .width-8x#{$i} {
+    width: #{$i * 8}px;
+  }
+
+  .height-2x#{$i} {
+    height: #{$i * 2}px;
+  }
+
+  .height-4x#{$i} {
+    height: #{$i * 4}px;
+  }
+
+  .height-8x#{$i} {
+    height: #{$i * 8}px;
+  }
+
+  .size-2x#{$i} {
+    width: #{$i * 2}px;
+    height: #{$i * 2}px;
+  }
+
+  .size-4x#{$i} {
+    width: #{$i * 4}px;
+    height: #{$i * 4}px;
+  }
+
+  .size-8x#{$i} {
+    width: #{$i * 8}px;
+    height: #{$i * 8}px;
+  }
+
+	
+  // Width classes
+  .add-width-2x#{$i} {
+    width: calc(100% + #{$i * 2}px);
+  }
+
+  .add-width-4x#{$i} {
+    width: calc(100% + #{$i * 4}px);
+  }
+
+  .add-width-8x#{$i} {
+    width: calc(100% + #{$i * 8}px);
+  }
+
+  // Height classes
+  .add-height-2x#{$i} {
+    height: calc(100% + #{$i * 2}px);
+  }
+
+  .add-height-4x#{$i} {
+    height: calc(100% + #{$i * 4}px);
+  }
+
+  .add-height-8x#{$i} {
+    height: calc(100% + #{$i * 8}px);
+  }
+
+  // Combined classes with calc() for width and height
+  .add-size-2x#{$i} {
+    width: calc(100% + #{$i * 2}px);
+    height: calc(100% + #{$i * 2}px);
+  }
+
+  .add-size-4x#{$i} {
+    width: calc(100% + #{$i * 4}px);
+    height: calc(100% + #{$i * 4}px);
+  }
+
+  .add-size-8x#{$i} {
+    width: calc(100% + #{$i * 8}px);
+    height: calc(100% + #{$i * 8}px);
+  }
+
+	
+  // Width classes
+  .width-per-#{$i} {
+    width: $i * 1%;
+  }
+
+  // Height classes
+  .height-per-#{$i} {
+    height: $i * 1%;
+  }
+
+  // Combined classes for width and height
+  .size-per-#{$i} {
+    width: $i * 1%;
+    height: $i * 1%;
+  }
+}

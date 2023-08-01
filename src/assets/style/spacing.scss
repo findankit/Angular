@@ -1,0 +1,19 @@
+@for $i from 1 through 100 {
+	.gap-#{$i} {
+		// .gap-1, .gap-40, .gap-99
+		gap: #{$i}px;
+	}
+
+	.pad-#{$i} {
+		// .pad-1, .pad-10, .pad-100
+		padding: #{$i};
+	}
+
+	.border-rad-#{$i} {
+		border-radius: #{$i}px;
+	}
+
+	.border-rad-per-#{$i} {
+		border-radius: $i * 1%;
+	}
+}

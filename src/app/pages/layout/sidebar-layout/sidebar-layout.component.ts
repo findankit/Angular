@@ -11,31 +11,33 @@ import { LayoutService } from 'src/app/service/layout/layout.service';
 export class SidebarLayoutComponent {
   showDropdown = false;
 	height = '';
-	toggleMenu$ = new BehaviorSubject(true);
+	// toggleMenu$ = new BehaviorSubject(true);
+	toggleMenu$ = this.service.toggleMenu$;
+	toggleMenu = this.service.toggleMenu;
 
 
 	constructor(
 		private service: LayoutService,
 	) {}
 
-	toggleMenu() {
-		let value = !this.toggleMenu$.value;
-		localStorage.setItem('toggleMenu$', value.toString());
-		this.toggleMenu$.next(!this.toggleMenu$.value);
-	}
+	// toggleMenu() {
+	// 	let value = !this.toggleMenu$.value;
+	// 	localStorage.setItem('toggleMenu$', value.toString());
+	// 	this.toggleMenu$.next(!this.toggleMenu$.value);
+	// }
+
 	setHeight() {
 		this.height = (window.innerHeight - 0.1) + 'px';
 	}
-
-	windowResize$ = fromEvent(window, 'resize').pipe(
-		debounceTime(15)
-	);
-
+	
 	ngOnInit() {
 		let menuToggleStatus = localStorage.getItem('toggleMenu$');
 		this.toggleMenu$.next(menuToggleStatus === 'true');
 		this.setHeight();
-		this.windowResize$.subscribe(event => this.setHeight());
+
+		fromEvent(window, 'resize')
+		.pipe( debounceTime(15))
+		.subscribe(event => this.setHeight());
 	}
 
   toggleDropdown() {

@@ -6,7 +6,11 @@ export class TableConfig {
 	tableActionConfig = new TableActionButtonConfig();
 	showActions = true;
 	columnOrder: string[] | null = null;
+	ignoredColumns: string[] = ['__v'];
+	bindValuePath: IObj = {};
 }
+
+interface IObj {[key: string]: any};
 
 @Component({
   selector: 'app-table',
@@ -14,9 +18,9 @@ export class TableConfig {
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent {
-	@Input() data: {[key: string]: any}[] = [];
+	@Input() data: IObj[] = [];
 	@Input() schema!: any;
-	@Input() config!: TableConfig;
+	@Input() config = new TableConfig();
 
 	@Output() onDelete = new EventEmitter<any>;
 	@Output() onUpdate = new EventEmitter<any>;
@@ -25,6 +29,13 @@ export class TableComponent {
 	@Output() onSubscribe = new EventEmitter<any>;
 
 	protected subscribedToEvents = false;
+
+	mangeIgnoreColumn(obj: IObj) {
+		this.config.ignoredColumns.map(el => {
+			delete obj[el];
+		});
+		return obj;
+	}
 
 	ngOnInit() {
 	}
