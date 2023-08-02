@@ -1,7 +1,7 @@
 <table *ngIf="data.length; else nodatafound;">
 		<tr class="header row header-row">
-			<th class="col header-col" *ngFor="let datavalue of data?.[0] | keyvalue">
-				<span>{{datavalue.key | properHeading}}</span>
+			<th class="col header-col" *ngFor="let datavalue of columns">
+				<span>{{datavalue | properHeading}}</span>
 			</th>
 			<th *ngIf="config.showActions">
 				Action(s)
@@ -9,8 +9,8 @@
 			<ng-content select="head"></ng-content>
 		</tr>
 		<tr class="row data-row" *ngFor="let datavalue of data">
-			<td class="col data-col" *ngFor="let item of mangeIgnoreColumn(datavalue) | keyvalue">
-				<span [title]="item.value | transform">{{item.value | transform}}</span>
+			<td class="col data-col" *ngFor="let item of matchIgnoredColumns(datavalue)">
+				<span>{{manageDataBind(item) | transform}}</span>
 			</td>
 			<td *ngIf="config.showActions">
 				<app-table-actions [config]="config.tableActionConfig" (onSubscribe)="subscribedToEvents=true" (onDelete)="null" [data]="datavalue"></app-table-actions>

@@ -20,7 +20,11 @@ export class TodoCategoryComponent {
 
 	category = new CategoryModel();
 	model = new ResponseDataList<CategoryModel>();
-	tableConfig = new TableConfig();
+	tableConfig = new TableConfig({
+		bindValuePath: {
+			// parent: 'name'
+		}
+	});
 	private _showModal = false;
 	private defaultShowMenuFlag: boolean | null = null;
 	get showModal() { return this._showModal }

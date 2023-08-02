@@ -1,20 +1,20 @@
 import { Component, ElementRef, EventEmitter, Input, Output } from '@angular/core';
 
 export type TableActions = 'delete' | 'update' | 'save' | 'view' | 'cancel';
-export type TableActionsLoose =  'd' | 'u' | 's' | 'v' | 'c' | TableActions;
+export type TableActionsLoose = 'd' | 'u' | 's' | 'v' | 'c' | TableActions;
 export class TableActionButtonConfig {
 	enableEditIconToggle: boolean = true;
-	buttons: TableActionsLoose[] = ['d', 'u', 's', 'v', 'c']; // initially all buttons are allowed to show, subscribe to respective events to make them visible
+	buttons: TableActionsLoose[] = [ 'd', 'u', 's', 'v', 'c' ]; // initially all buttons are allowed to show, subscribe to respective events to make them visible
 }
 
 @Component({
-  selector: 'app-table-actions',
-  templateUrl: './table-actions.component.html',
-  styleUrls: ['./table-actions.component.scss']
+	selector: 'app-table-actions',
+	templateUrl: './table-actions.component.html',
+	styleUrls: [ './table-actions.component.scss' ]
 })
 export class TableActionsComponent {
 	@Input() data!: any;
-	@Input() config: TableActionButtonConfig = new TableActionButtonConfig();
+	@Input() config?: TableActionButtonConfig = new TableActionButtonConfig();
 	@Input() isEditing = false;
 
 	/* Below Output declaration are for accessing $event in parent event subscription */
@@ -27,27 +27,27 @@ export class TableActionsComponent {
 
 	constructor(
 		private element: ElementRef,
-	){}
+	) { }
 
 
-	actionGroup: {[key in TableActions]: TableActionsLoose[]} = {
-		'delete': ['d'],
-		'update': ['u'],
-		'save': ['s'],
-		'view': ['v'],
-		'cancel': ['c'],
+	actionGroup: { [ key in TableActions ]: TableActionsLoose[] } = {
+		'delete': [ 'd' ],
+		'update': [ 'u' ],
+		'save': [ 's' ],
+		'view': [ 'v' ],
+		'cancel': [ 'c' ],
 	}
 
 	subscribed = false;
 	isVisible(action: TableActions, event: EventEmitter<any>) {
-		let actionsToFind = [...this.actionGroup[action], action];
+		let actionsToFind = [ ...this.actionGroup[ action ], action ];
 		let emitterUsed = event?.observed; // subscribe to respective events to make them visible
-		if(emitterUsed && !this.subscribed) {
+		if (emitterUsed && !this.subscribed) {
 			this.subscribed = true;
 			this.onSubscribe.emit();
 		}
 		let condition = actionsToFind.some(el => {
-			return this.config.buttons.some(action => action == el)
+			return this.config?.buttons.some(action => action == el)
 		});
 		return condition && emitterUsed;
 	}
@@ -79,5 +79,5 @@ export class TableActionsComponent {
 		this.dispatch('onView');
 	}
 
-	cancel() {this.dispatch('onCancel')}
+	cancel() { this.dispatch('onCancel') }
 }

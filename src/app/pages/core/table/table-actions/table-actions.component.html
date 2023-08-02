@@ -1,7 +1,7 @@
 <div class="parent">
 	<mat-icon *ngIf="isVisible('delete', onDelete)" (click)="delete()">delete_forever</mat-icon>
 	<mat-icon *ngIf="isVisible('view', onView)" (click)="view()">visibility</mat-icon>
-	<ng-container *ngIf="config.enableEditIconToggle; else plainEditButtons;">
+	<ng-container *ngIf="config?.enableEditIconToggle; else plainEditButtons;">
 		<mat-icon (click)="isEditing = !isEditing; update();" *ngIf="!isEditing && isVisible('update', onUpdate); else ubpdatebutton;">edit</mat-icon>
 		<ng-template #ubpdatebutton>
 			<mat-icon (click)="isEditing = !isEditing; save();" *ngIf="isVisible('update', onUpdate);">save</mat-icon>
