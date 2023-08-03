@@ -13,20 +13,14 @@ import { LayoutService } from 'src/app/service/layout/layout.service';
 	styleUrls: [ './todo-category.component.scss' ]
 })
 export class TodoCategoryComponent {
-	constructor(
-		private service: CategoryService,
-		private layoutService: LayoutService,
-	) { }
-
-	category = new CategoryModel();
-	model = new ResponseDataList<CategoryModel>();
 	tableConfig = new TableConfig({
 		bindValuePath: {
-			// parent: 'name'
+			parent: 'name'
 		}
 	});
-	private _showModal = false;
+
 	private defaultShowMenuFlag: boolean | null = null;
+	private _showModal = false;
 	get showModal() { return this._showModal }
 	set showModal(value) {
 		if (value) {
@@ -37,8 +31,16 @@ export class TodoCategoryComponent {
 
 		this._showModal = value;
 	}
-	isCreatingParent = false;
 
+	constructor(
+		private service: CategoryService,
+		private layoutService: LayoutService,
+	) { }
+
+	category = new CategoryModel();
+	model = new ResponseDataList<CategoryModel>();
+	isCreatingParent = false;
+	
 	ngOnInit() {
 		// this.defaultShowMenuFlag = this.layoutService.toggleMenu$.value;
 		this.getCategoryList();
@@ -66,6 +68,7 @@ export class TodoCategoryComponent {
 			if (event.success) {
 				this.getCategoryList();
 				this.showModal = false;
+				form.reset();
 			}
 		})
 	}
