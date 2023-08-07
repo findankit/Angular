@@ -23,6 +23,10 @@ const routes: Routes = [
 				path: 'todo',
 				loadChildren: () => import('./pages/todo/todo.module').then(m => m.TodoModule)
 			},
+			{
+				path: 'cms',
+				loadChildren: () => import('./pages/cms/cms.module').then(m => m.CmsModule)
+			},
 		]
 	},
 ];

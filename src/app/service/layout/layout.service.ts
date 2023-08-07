@@ -3,14 +3,14 @@ import { BehaviorSubject } from 'rxjs';
 import { NavDropdownOption } from 'src/app/pages/layout/nav-dropdown/nav-dropdown.component';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class LayoutService {
 
-  constructor() {}
+	constructor() { }
 
 	toggleMenu$ = new BehaviorSubject(true);
-	
+
 	toggleMenu() {
 		let value = !this.toggleMenu$.value;
 		// debugger;
@@ -28,14 +28,19 @@ export class LayoutService {
 		this.toggleMenu$.next(true);
 	}
 
-	sidebarMenu: NavDropdownOption[]  = [
+	sidebarMenu: NavDropdownOption[] = [
 		{
 			name: 'Todos',
-			child:
-			[
-				['Categories', '/todo/category'],
-				['Todo List', '/todo/list'],
+			child: [
+				[ 'Categories', '/todo/category' ],
+				[ 'Todo List', '/todo/list' ],
 			]
 		},
+		{
+			name: 'CMS',
+			child: [
+				[ 'Butter CMS', '/cms/butter-cms/landing']
+			]
+		}
 	]
 }

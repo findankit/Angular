@@ -13,6 +13,8 @@ import { RouterModule } from '@angular/router';
 import { LayoutModule } from './pages/layout/layout.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
+import { ButterCmsModule } from './pages/cms/butter-cms/butter-cms.module';
+import { CmsModule } from './pages/cms/cms.module';
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import { MatIconModule } from '@angular/material/icon';
 		LayoutModule,
 		BrowserAnimationsModule,
 		MatIconModule,
-		// RouterModule,
+		// ButterCmsModule,
+		// CmsModule,
 	],
 	providers: [
     {

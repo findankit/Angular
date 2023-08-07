@@ -15,5 +15,5 @@ export class NavDropdownComponent {
 
 export class NavDropdownOption {
 	name!: string;
-	child?: [fieldname: string, routerPath: string][];
+	child?: [name: string, routerPath: string, child?: NavDropdownComponent][];
 }

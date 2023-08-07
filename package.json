@@ -20,6 +20,7 @@
     "@angular/platform-browser-dynamic": "^16.0.0",
     "@angular/router": "^16.0.0",
     "@ng-select/ng-select": "^11.0.0",
+    "@sanity/client": "^6.4.0",
     "i": "^0.3.7",
     "moment": "^2.29.4",
     "npm": "^9.8.1",

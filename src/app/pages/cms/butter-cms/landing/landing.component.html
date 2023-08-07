@@ -1,0 +1,41 @@
+<p>landing works!</p>
+
+
+<div class="header">
+	<h4>Navigation Items</h4>
+	<nav>
+		<div class="navitem" *ngFor="let el of menuModel.data.navigation_menu_item">
+			<span>{{el.label}}</span>
+		</div>
+	</nav>
+</div>
+
+<h2>Blogs</h2>
+<div class="blogs">
+	<div class="blog" *ngFor="let blog of blogsModel.data">
+		<div class="blog-details">
+			<h3>
+				{{blog.title}}
+			</h3>
+		</div>
+		<div class="blog-author">
+			Author: 
+			<h4>
+				{{blog.author.first_name}}
+			</h4>
+		</div>
+		<div class="blog-image">
+			<img [src]="blog.featured_image" [alt]="blog.featured_image_alt">
+		</div>
+		<div class="blog-content">
+			<h5>Body</h5>
+			<p>
+				{{blog.body}}
+			</p>
+			<h5>Summary</h5>
+			<p>
+				{{blog.summary}}
+			</p>
+		</div>
+	</div>
+</div>
