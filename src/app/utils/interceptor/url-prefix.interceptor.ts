@@ -22,6 +22,11 @@ export class UrlPrefixInterceptor implements HttpInterceptor {
 				headers: request.headers.set('Authorization', 'Token ' + environment.cms.butter.token)
 			});
 			return handle();
+		} else if(request.url.startsWith('http') && request.url.includes('api.sanity.io')) {
+			request = request.clone({
+				headers: request.headers.set('Authorization', 'Bearer ' + environment.cms.sanityio.token)
+			});
+			return handle();
 		}
 		request = request.clone({
 			url: `${this.baseUrl}${request.url}`

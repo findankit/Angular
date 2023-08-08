@@ -39,7 +39,8 @@ export class LayoutService {
 		{
 			name: 'CMS',
 			child: [
-				[ 'Butter CMS', '/cms/butter-cms/landing']
+				[ 'Butter CMS', '/cms/butter-cms/landing'],
+				[ 'Sanity.io', '/cms/sanityio-cms/landing'],
 			]
 		}
 	]

@@ -10,6 +10,9 @@ export const environment = {
 			baseUrl: 'https://sanityiotest.api.sanity.io/',
 			sanityHost: 'sanityiotest',
 			projectId: 'l1ey8k4t',
+			version: 'v2021-03-25',
+			app: 'l1ey8k4t',
+			dataset: 'production',
 		}
 	}
 };

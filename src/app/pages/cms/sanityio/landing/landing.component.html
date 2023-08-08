@@ -1,0 +1,38 @@
+<div class="notes">
+	<h4>Notes:</h4>
+	<ul>
+		<li>Creating dynamic queries are difficult, because need to follow GROQ structure, <a href="https://www.sanity.io/docs/query-cheat-sheet">cheat sheet</a></li>
+	</ul>
+</div>
+
+
+
+<h2>Blogs</h2>
+<div class="blogs">
+	<div class="blog" *ngFor="let blog of postsModel.result">
+		<div class="blog-details">
+			<h3>
+				{{blog.title}}
+			</h3>
+		</div>
+		<div class="blog-author">
+			Author: 
+			<h4>
+				{{blog.author?._ref || 'No author reference.'}}
+			</h4>
+		</div>
+		<div class="blog-image">
+			<img [src]="img(blog?.mainImage?.asset?._ref)" [alt]="">
+		</div>
+		<div class="blog-content">
+			<h5>Body</h5>
+			<p>
+				{{blog.body}}
+			</p>
+			<h5>Summary</h5>
+			<p>
+				{{joinBlogData(blog?.body || [])}}
+			</p>
+		</div>
+	</div>
+</div>

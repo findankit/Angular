@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ButterCmsRoutingModule } from './butter-cms-routing.module';
+import { SanityioRoutingModule } from './sanityio-routing.module';
 import { LandingComponent } from './landing/landing.component';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 @NgModule({
@@ -12,9 +11,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
   ],
   imports: [
     CommonModule,
-    ButterCmsRoutingModule
-  ],
-	providers: [
-	]
+    SanityioRoutingModule
+  ]
 })
-export class ButterCmsModule { }
+export class SanityioModule { }

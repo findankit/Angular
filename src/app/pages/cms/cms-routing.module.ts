@@ -4,9 +4,18 @@ import { CmsLayoutComponent } from './cms-layout/cms-layout.component';
 
 const routes: Routes = [
 	{
-		path: 'butter-cms',
+		path: '',
 		component: CmsLayoutComponent,
-		loadChildren: () => import('./butter-cms/butter-cms.module').then(e => e.ButterCmsModule),
+		children: [
+			{
+				path: 'butter-cms',
+				loadChildren: () => import('./butter-cms/butter-cms.module').then(e => e.ButterCmsModule),
+			},
+			{
+				path: 'sanityio-cms',
+				loadChildren: () => import('./sanityio/sanityio.module').then(e => e.SanityioModule),
+			},
+		]
 	}
 ];
 
