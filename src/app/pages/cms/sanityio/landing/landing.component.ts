@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { QueryResponseModel, SanityResponse, SanityTextEditorBody } from 'src/app/service/cms/sanityio/sanityio';
+import { SanityNavItemModel, SanityResponse } from 'src/app/service/cms/sanityio/sanityio';
 import { SanityioService } from 'src/app/service/cms/sanityio/sanityio.service';
 
 @Component({
@@ -12,26 +12,16 @@ export class LandingComponent {
 		private service: SanityioService,
 	){}
 
-	postsModel = new SanityResponse<QueryResponseModel>();
-	img = this.service.helpers.imageUrl;
-	
+	navItems: SanityNavItemModel[] = [];
+
 	ngOnInit() {
-		this.getPosts();
-		this.postsModel.result
+		this.getNavigationItems();
 	}
 
-	getPosts() {
-		this.service.query().subscribe(event => {
-			console.log(event);
-			this.postsModel = event;
+	getNavigationItems() {
+		this.service.query({_type: 'navItems'}).subscribe((event: SanityResponse<SanityNavItemModel>) => {
+			// navItems.result.map(el => )
+			this.navItems = event.result;
 		})
-	}
-
-	joinBlogData(data: SanityTextEditorBody[]) {
-		return data.map(el => {
-			let child = el.children;
-			let text = child?.map(el => el.text).join('\n');
-			return text;
-		}).join('\n');
 	}
 }

@@ -26,3 +26,9 @@ mat-drawer-content {
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+.dull {
+	background-color: rgba(255, 255, 255, 0.329);
+	padding: 10px;
+	height: 100vh;
+	overflow: auto;
+}

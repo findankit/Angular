@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { QueryResponseModel, SanityQueryModel, SanityResponse } from './sanityio';
+import { SanityQueryModel, SanityResponse } from './sanityio';
 import { HttpClient } from '@angular/common/http';
 
 
@@ -31,11 +31,15 @@ export class SanityioService {
 	}
 
 
-	query(query: SanityQueryModel = {_type: 'post'}) {
-		let temp = Object.entries(query)[ 0 ];
-		let tempQuery = temp.length ? `[${temp[ 0 ]} == '${temp[ 1 ]}']` : '';
-		let url = this.helpers.endpoint() + `query/${this.env.dataset}?query=*${tempQuery}`;
-		return this.http.get<SanityResponse<QueryResponseModel>>(url);
+	query(query: SanityQueryModel = {_type: 'navItems'}) {
+		let querystring = Object.entries(query).map(el => {
+			let [key, value] = el;
+			return key && value ? `[${key} == '${value}']` : ''
+		}).join('');
+		// let temp = Object.entries(query)[ 0 ];
+		// let tempQuery = temp.length ? `[${temp[ 0 ]} == '${temp[ 1 ]}']` : '';
+		let url = this.helpers.endpoint() + `query/${this.env.dataset}?query=*${querystring}`;
+		return this.http.get<SanityResponse<any>>(url);
 	}
 
 	docById(id: string) {

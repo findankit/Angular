@@ -95,7 +95,7 @@ export class ButterPaginationObj<T> {
 	data: T = {} as T;
 }
 
-export class ButterFAQModel {
+export class ButterFAQPageModel {
 	"page_title"!: string;
 	"background"!: string;
 	"background-color"!: string;

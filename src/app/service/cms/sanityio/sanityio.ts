@@ -1,9 +1,10 @@
-
+export type SanityTypes = 'faq' | 'navItems' | 'pages';
+export type SanityPageTypes = 'faq' | 'home';
 export class SanityQueryModel {
-	_type?: 'block' | 'span' | 'post' | 'category'; // Type is schema name in sanity project.
-	_key?: "a6eeb8ed4b7f";
+	_type?: SanityTypes; // Type is schema name in sanity project.
+	_key?: string;
+	tag? : string;
 }
-
 
 type _typeData = 'reference' | 'slug';
 type _typeSchema = 'author' | 'blockContent' | 'category' | 'post'; // These are schema name of sanity.io project's schemas
@@ -14,7 +15,7 @@ class Ref {
 	_type?: _type;
 	_ref?: string;
 }
-export class SanityTextEditorBody {
+export class SanityBlockContentModel {
 	markDefs?: unknown[];
 	children?: [
 		{
@@ -28,45 +29,74 @@ export class SanityTextEditorBody {
 	_type?: string;
 	_key?: string;
 }
-export class QueryResponseModel {
+export class SanityImageModel {
+	hotspot?: {
+		y: number,
+		height: number,
+		_type: _typeImage,
+		width: number,
+		x: number
+	};
+	_type!: _typeImage;
+	asset!: {
+		_ref: string, // image file name
+		_type: _typeImage;
+	};
+	crop?: {
+		top: number,
+		left: number,
+		bottom: number,
+		_type: _typeImage,
+		right: number
+	};
+}
+
+export class SanityCommonResponseFields {
 	_createdAt!: Date;
 	_updatedAt!: Date;
 	_rev!: string;
 	_type!: _type;
 	_id!: string;
-	slug!: {
-		current: string;
-		_type: _type;
-	}
-
-	author?: Ref;
-	title?: string;
-	body?: SanityTextEditorBody[];
-	mainImage?: {
-		hotspot: {
-			y: number,
-			height: number,
-			_type: _typeImage,
-			width: number,
-			x: number
-		},
-		_type: _typeImage,
-		asset: {
-			_ref: string, // image file name
-			_type: _typeImage;
-		},
-		crop: {
-			top: number,
-			left: number,
-			bottom: number,
-			_type: _typeImage,
-			right: number
-		}
-	}
 }
+
+// export class QueryResponseModel extends SanityCommonResponseFields {
+// 	slug!: {
+// 		current: string;
+// 		_type: _type;
+// 	}
+// 	author?: Ref;
+// 	title?: string;
+// 	body?: SanityBlockContentModel[];
+// 	mainImage?: SanityImageModel[];
+// }
 
 
 export class SanityResponse<T> {
 	query!: string;
 	result: T[] = [];
+	ms?: number;
+}
+
+
+/* different _type models */
+export class SanityNavItemModel extends SanityCommonResponseFields {
+	label!: string;
+	url!: string;
+}
+
+export class SanityFAQModel extends SanityCommonResponseFields {
+	title!: string;
+	body!: SanityBlockContentModel[];
+	summary!: SanityBlockContentModel[];
+	featured_image!: SanityImageModel | null;
+	featured_image_alt!: string;
+	categories!: string;
+	tags!: string;
+}
+
+export class SanityPagesModel extends SanityCommonResponseFields {
+	background!: SanityImageModel | null;
+	tag!: string;
+	heading!: string;
+	description!: SanityBlockContentModel[];
 }

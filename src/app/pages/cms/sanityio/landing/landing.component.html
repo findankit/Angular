@@ -5,34 +5,16 @@
 	</ul>
 </div>
 
+<h3>SANITY.IO</h3>
 
-
-<h2>Blogs</h2>
-<div class="blogs">
-	<div class="blog" *ngFor="let blog of postsModel.result">
-		<div class="blog-details">
-			<h3>
-				{{blog.title}}
-			</h3>
-		</div>
-		<div class="blog-author">
-			Author: 
-			<h4>
-				{{blog.author?._ref || 'No author reference.'}}
-			</h4>
-		</div>
-		<div class="blog-image">
-			<img [src]="img(blog?.mainImage?.asset?._ref)" [alt]="">
-		</div>
-		<div class="blog-content">
-			<h5>Body</h5>
-			<p>
-				{{blog.body}}
-			</p>
-			<h5>Summary</h5>
-			<p>
-				{{joinBlogData(blog?.body || [])}}
-			</p>
-		</div>
+<div class="nav">
+	<div class="nav-item" *ngFor="let nav of navItems">
+		<a [routerLink]="nav.url">
+			<span>{{nav.label}}</span>
+		</a>
 	</div>
 </div>
+
+<section>
+	<router-outlet></router-outlet>
+</section>

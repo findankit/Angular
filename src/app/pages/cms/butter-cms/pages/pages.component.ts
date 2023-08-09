@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ButterFAQModel, ButterHomePageModel, ButterItemIdentity, ButterPageTypes, ButterPagesModel, ButterPagination, GetBlogPostModel } from 'src/app/service/cms/butter-cms/butter-cms';
+import { ButterFAQPageModel, ButterHomePageModel, ButterItemIdentity, ButterPageTypes, ButterPagesModel, ButterPagination, GetBlogPostModel } from 'src/app/service/cms/butter-cms/butter-cms';
 import { ButterCmsService } from 'src/app/service/cms/butter-cms/butter-cms.service';
 import { LayoutService } from 'src/app/service/layout/layout.service';
 
@@ -20,7 +20,7 @@ export class PagesComponent {
 	currentPage: ButterPageTypes | null = null;
 
 	homePageModel = new ButterHomePageModel();
-	faqModel = new ButterFAQModel();
+	faqModel = new ButterFAQPageModel();
 	faqListModel = new ButterPagination<GetBlogPostModel>();
 
 	ngOnInit(): void {
@@ -36,7 +36,7 @@ export class PagesComponent {
 				let data: ButterPagesModel<ButterHomePageModel> = event.data;
 				this.homePageModel = data.fields;
 			} else if (page == 'faq') {
-				let data: ButterPagesModel<ButterFAQModel> = event.data; 
+				let data: ButterPagesModel<ButterFAQPageModel> = event.data; 
 				this.faqModel = data.fields;
 				this.service.getBlogs({category_slug: 'faq'}).subscribe(blogs => {
 					console.log(blogs);

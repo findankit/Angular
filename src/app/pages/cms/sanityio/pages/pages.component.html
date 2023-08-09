@@ -1,0 +1,77 @@
+<p>pages works!</p>
+
+<!-- {{faqPageModel | json}}
+{{pageModel | json}} -->
+
+<div class="home">
+	<h3>{{pageModel.heading}}</h3>
+	<p>{{displayBlockContent(pageModel.description)}}</p>
+</div>
+
+<div class="faqs-parent" *ngIf="currentPage == 'faq'">
+	<!-- <h3>{{pageModel.heading}}</h3> -->
+	<div class="faqs">
+		<div class="faq-parent" *ngFor="let faqItem of faqListModel.result">
+			<div class="faq">
+				<div class="header">
+					<div class="question">
+						<strong>
+							Q. {{faqItem.title}}
+						</strong>
+					</div>
+					<!-- <div class="author">
+						<small>Answered by <strong>{{faqItem.author.first_name}}
+								{{faqItem.author.last_name}}</strong>.</small><small><small> (note: this username is fetched from logged
+								in user details on (butter cms))</small></small>
+					</div> -->
+				</div>
+				<hr>
+				<div class="content">
+					<div class="content-box">
+						<div class="content-title">
+							<h4>Reply</h4>
+						</div>
+						<div class="content-details">
+							<p>{{displayBlockContent(faqItem.body)}}</p>
+
+
+							<div class="image-box">
+								<div class="image">
+									<img [src]="imgUrl(faqItem.featured_image?.asset?._ref)" [alt]="faqItem.featured_image_alt">
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="content-box">
+						<div class="content-title">
+							<h4>Conclusion</h4>
+						</div>
+						<div class="content-details">
+							<p>{{displayBlockContent(faqItem.summary)}}</p>
+						</div>
+					</div>
+				</div>
+				<hr>
+				<div class="footer">
+					<div class="content-box">
+						<div class="content-title">
+							<h4>Tags</h4>
+						</div>
+						<div class="content-details">
+							<p>{{faqItem.tags}}</p>
+						</div>
+					</div>
+					<div class="content-box">
+						<div class="content-title">
+							<h4>Categories</h4>
+						</div>
+						<div class="content-details">
+							<p>{{faqItem.categories}}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
