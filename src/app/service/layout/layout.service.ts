@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { NavDropdownOption } from 'src/app/pages/layout/nav-dropdown/nav-dropdown.component';
 
 @Injectable({
@@ -10,6 +10,7 @@ export class LayoutService {
 	constructor() { }
 
 	toggleMenu$ = new BehaviorSubject(true);
+	backgroundImage$ = new Subject<string | null>();
 
 	toggleMenu() {
 		let value = !this.toggleMenu$.value;
@@ -17,6 +18,7 @@ export class LayoutService {
 		localStorage.setItem('toggleMenu$', value.toString());
 		this.toggleMenu$.next(!this.toggleMenu$.value);
 	}
+	
 	hideMenu() {
 		// debugger;
 		localStorage.setItem('toggleMenu$', 'false');

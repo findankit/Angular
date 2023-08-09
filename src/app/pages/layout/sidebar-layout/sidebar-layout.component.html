@@ -10,7 +10,7 @@
 			</div>
 		</nav>
   </mat-drawer>
-	<mat-drawer-content>
+	<mat-drawer-content [ngStyle]="{'background-image': 'url(\''+backgroundImage+'\')', padding: '10px'}">
 		<div *ngIf="!toggleMenu$.value">
 			<mat-icon class="openSidebar action" (click)="toggleMenu()">apps</mat-icon>
 		</div>

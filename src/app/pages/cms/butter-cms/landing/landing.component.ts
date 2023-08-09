@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { catchError, of } from 'rxjs';
-import { ButterCmsQueryStringModel, GetBlogPostModel, GetContentModel } from 'src/app/service/cms/butter-cms/butter-cms';
+import { ButterCollectionListModel, ButterCollectionTypes, ButterHomeCollectionModel, ButterPaginationObj } from 'src/app/service/cms/butter-cms/butter-cms';
 import { ButterCmsService } from 'src/app/service/cms/butter-cms/butter-cms.service';
+
+class NavModel extends ButterPaginationObj<ButterCollectionListModel<ButterHomeCollectionModel>> {};
 
 @Component({
 	selector: 'app-landing',
@@ -13,37 +14,20 @@ export class LandingComponent {
 		private service: ButterCmsService,
 	) { }
 
+	navModel = new NavModel();
+	navItems: ButterHomeCollectionModel[] = [];
+
 	ngOnInit() {
-		this.getPageContent();
-		this.getMenuItems();
-		this.getBlogs();
+		this.getCollection('home');
 	}
 
-	queryModel = new ButterCmsQueryStringModel();
-	menuModel = new GetContentModel();
-	blogsModel = new GetBlogPostModel();
-
-	getPageContent() {
-		this.service.getCollection(this.queryModel)
-			.pipe(catchError(v => of(v.error)))
-			.subscribe((event: any) => {
-				console.log(event);
-			});
-	}
-
-	getMenuItems() {
-		let queryModel = new ButterCmsQueryStringModel();
-		queryModel._keys = ['navigation_menu_item'];
-		this.service.getCollection(queryModel).subscribe(event => {
-			this.menuModel = event;
-		})
-	}
-
-	getBlogs() {
-		let queryModel = new ButterCmsQueryStringModel();
-		// queryModel._keys = ['navigation_menu_item'];
-		this.service.getBlogs(queryModel).subscribe(event => {
-			this.blogsModel = event;
+	getCollection(type: ButterCollectionTypes = 'home') {
+		this.service.getCollectionByType(type).subscribe((event: NavModel) => {
+			if(type == 'home') {
+				this.navModel = event;
+				this.navItems = event.data[type];
+				console.log(this.navItems);
+			}	
 		})
 	}
 }

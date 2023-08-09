@@ -15,6 +15,7 @@ export class SidebarLayoutComponent {
 	toggleMenu$ = this.service.toggleMenu$;
 	toggleMenu = this.service.toggleMenu;
 
+	backgroundImage: string | null = null;
 
 	constructor(
 		private service: LayoutService,
@@ -34,7 +35,9 @@ export class SidebarLayoutComponent {
 		let menuToggleStatus = localStorage.getItem('toggleMenu$');
 		this.toggleMenu$.next(menuToggleStatus === 'true');
 		this.setHeight();
-
+		this.service.backgroundImage$.subscribe(event => {
+			this.backgroundImage = event;
+		})
 		fromEvent(window, 'resize')
 		.pipe( debounceTime(15))
 		.subscribe(event => this.setHeight());

@@ -1,6 +1,12 @@
 
 export type butterCmsQueryKeys = 'navigation_menu' | 'collection_test_001' | 'navigation_menu_item';
 
+// these types has many ButterCmsPages .. Though each types may have different pages.
+// This is page_type, blog type and collection type .. all must be same.
+export type ButterBlogTypes = 'faq';
+export type ButterPageTypes = 'home' | 'faq'; 
+export type ButterCollectionTypes = 'home'; 
+
 export class ButterCmsQueryStringModel {
 	private keys!: string;
 	test!: number;
@@ -23,38 +29,38 @@ export class PaginationMeta {
 	previous_page!: null | number;
 }
 
-class ContentItem {
-	meta!: {
+class ButterMeta {
+	meta?: {
 		id: number;
 	};
 }
 export class GetContentModel<meta> {
 	data!: {
-		[ key in butterCmsQueryKeys ]?: (ContentItem & { [ key in contentKeys ]?: any })[]
+		[ key in butterCmsQueryKeys ]?: (ButterMeta & { [ key in contentKeys ]?: any })[]
 	};
 	meta!: meta;
 }
 
-export class GetBlogPostModel<meta> {
-	data: {
-		status: string;
-		created: string;
-		updated: string;
-		published: string;
-		title: string;
-		slug: string;
-		body: string;
-		summary: string;
-		seo_title: string;
-		meta_description: string;
-		featured_image_alt: string;
-		url: string;
-		featured_image: string | null;
-		author: ButterUserProfile;
-		tags: ButterItemIdentity[];
-		categories: ButterItemIdentity[];
-	}[] = [];
-	meta!: meta;
+class CommonButters {
+	updated!: string;
+	published!: string;
+	slug!: string;
+}
+
+export class GetBlogPostModel extends CommonButters {
+	status!: string;
+	created!: string;
+	title!: string;
+	body!: string;
+	summary!: string;
+	seo_title!: string;
+	meta_description!: string;
+	featured_image_alt!: string;
+	url!: string;
+	featured_image!: string | null;
+	author!: ButterUserProfile;
+	tags!: ButterItemIdentity[];
+	categories!: ButterItemIdentity[];
 }
 
 
@@ -75,7 +81,43 @@ export class ButterUserProfile {
 	twitter_handle: string = "";
 }
 
-class ButterItemIdentity {
+export class ButterItemIdentity {
 	name!: string;
 	slug!: string;
+}
+
+export class ButterPagination<T> {
+	meta: PaginationMeta = {} as PaginationMeta;
+	data: T[] = [];
+}
+export class ButterPaginationObj<T> {
+	meta: PaginationMeta = {} as PaginationMeta;
+	data: T = {} as T;
+}
+
+export class ButterFAQModel {
+	"page_title"!: string;
+	"background"!: string;
+	"background-color"!: string;
+}
+export class ButterHomePageModel {
+	heading!: string;
+	description!: string;
+	background!: string;
+	'background-color'!: string
+}
+export class ButterPagesModel<page> extends CommonButters {
+	name!: string;
+	page_type!: string;
+	fields: page = {} as page;
+}
+
+export class ButterHomeCollectionModel extends ButterMeta {
+	label!: string;
+	endpoint!: string;
+}
+
+export class ButterCollectionListModel<T> {
+	/* T is collection model */
+	[key: string]: T[];
 }
