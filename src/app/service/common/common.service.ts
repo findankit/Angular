@@ -1,10 +1,15 @@
 import { Injectable } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import {sanitize} from 'dompurify';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommonService {
-  constructor() { }
+  constructor(
+		private sanitizer: DomSanitizer,
+	) { }
 	
   getQueryStrings(url: string, obj: { [ key: string ]: any }): string {
 		
@@ -21,4 +26,9 @@ export class CommonService {
     let finalStr = ['?', '&'].some(el => el == str) ? '' : str;
 		return url + finalStr;
   }
+
+	sanitizeHtml(html: string) {
+		const sanitizedContent = sanitize(html);
+		return this.sanitizer.bypassSecurityTrustHtml(sanitizedContent);
+	}
 }

@@ -1,6 +1,7 @@
 <div class="home" *ngIf="currentPage == 'home'">
 	<h3>{{homePageModel.heading}}</h3>
-	<p>{{homePageModel.description}}</p>
+	<!-- <p>{{homePageModel.description}}</p> -->
+	<div [innerHtml]="homePageModel.description"></div>
 </div>
 
 <div class="faqs-parent" *ngIf="currentPage == 'faq'">

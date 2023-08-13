@@ -1,23 +1,27 @@
 .actions {
-	padding: 10px;
 	display: flex;
-	gap: 20px;
-
-	// justify-content: right;
-	>.actionButton {
-		color: gray;
-		cursor: pointer;
-
-		&:hover {
-			color: black;
+	
+	>div {
+		padding: 10px;
+		display: flex;
+		gap: 20px;
+	
+		// justify-content: right;
+		>.actionButton {
+			color: gray;
+			cursor: pointer;
+	
+			&:hover {
+				color: black;
+			}
 		}
-	}
-
-	.actionButton {
-		mat-icon {
-			font-size: 16px;
-			padding-top: 2px;
-			text-decoration: none;
+	
+		.actionButton {
+			mat-icon {
+				font-size: 16px;
+				padding-top: 2px;
+				text-decoration: none;
+			}
 		}
 	}
 }

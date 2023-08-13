@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ButterFAQPageModel, ButterHomePageModel, ButterItemIdentity, ButterPageTypes, ButterPagesModel, ButterPagination, GetBlogPostModel } from 'src/app/service/cms/butter-cms/butter-cms';
 import { ButterCmsService } from 'src/app/service/cms/butter-cms/butter-cms.service';
+import { CommonService } from 'src/app/service/common/common.service';
 import { LayoutService } from 'src/app/service/layout/layout.service';
 
 
@@ -15,6 +16,7 @@ export class PagesComponent {
 		private router: ActivatedRoute,
 		private service: ButterCmsService,
 		private layoutService: LayoutService,
+		private common: CommonService,
 	) { }
 
 	currentPage: ButterPageTypes | null = null;
@@ -22,6 +24,8 @@ export class PagesComponent {
 	homePageModel = new ButterHomePageModel();
 	faqModel = new ButterFAQPageModel();
 	faqListModel = new ButterPagination<GetBlogPostModel>();
+
+	sanitizeHtml = this.common.sanitizeHtml;
 
 	ngOnInit(): void {
 		this.router.paramMap.subscribe(evt => {
