@@ -5,31 +5,47 @@ form {
 	gap: 10px;
 	align-items: center;
 
-	input,
-	select {
-		border: none;
-		border-bottom: 1px solid black;
-		padding: 10px;
-		outline: none;
-		background: transparent;
-	}
+	.data {
+		display: flex;
 
-	select option {
-		padding: 8px;
-		background-color: #fff;
-		color: #333;
-		border-radius: 0;
-	}
+		.item {
+			display: flex;
+			align-items: center;
 
-	select option:checked {
-		background-color: #007bff;
-		color: #fff;
-	}
+			.value {
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
 
-	>div {
-		margin: 5px;
-		>* {
-			margin: 5px;
+			input,
+			select {
+				border: none;
+				border-bottom: 1px solid black;
+				padding: 10px;
+				outline: none;
+				background: transparent;
+			}
+
+			select option {
+				padding: 8px;
+				background-color: #fff;
+				color: #333;
+				border-radius: 0;
+			}
+
+			select option:checked {
+				background-color: #007bff;
+				color: #fff;
+			}
+
+			>div {
+				margin: 5px;
+
+				>* {
+					margin: 5px;
+				}
+			}
 		}
 	}
 }
@@ -37,6 +53,7 @@ form {
 form.non-editable {
 	label {
 		color: gray;
+
 		&:after {
 			content: ':'
 		}
@@ -65,6 +82,7 @@ mat-icon {
 	height: 1.2em;
 	width: 1.2em;
 	padding: 2px;
+
 	&:hover {
 		padding: 3px;
 		background: black;

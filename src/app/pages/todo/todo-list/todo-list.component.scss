@@ -1,6 +1,8 @@
 .actions {
 	display: flex;
-	
+	align-items: baseline;
+	gap: 10px;
+	flex-wrap: wrap;
 	>div {
 		padding: 10px;
 		display: flex;
@@ -26,17 +28,29 @@
 	}
 }
 
+
+.drag-placeholder {
+	border: 2px solid red;
+}
 .parent {
 	.todo-item {
 		display: block;
+		transition: 0.3s;
+		border-radius: 10px;
 	}
 
 	.todo-item:nth-child(odd) {
 		background: rgba(128, 128, 128, 0.241);
+		&:hover {
+			box-shadow: 0 0 10px rgba(255, 255, 255, 0.501) inset;
+		}
 	}
 
 	.todo-item:nth-child(even) {
 		background: rgba(128, 128, 128, 0.036);
+		&:hover {
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.107) inset;
+		}
 	}
 
 }

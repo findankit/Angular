@@ -10,19 +10,30 @@
 			<mat-icon class="toggle-status">radio_button_unchecked</mat-icon>
 		</ng-template>
 	</div>
-	
+	<div>
+		<mat-form-field>
+			<mat-label>Todo Status</mat-label>
+			<mat-select [(ngModel)]="filter.showStatus"  multiple>
+				<mat-option *ngFor="let todo of todoStatusList" [value]="todo.value">{{todo.key | properHeading}}</mat-option>
+			</mat-select>
+		</mat-form-field>
+	</div>
+
 </div>
 <div class="parent">
 	<div class="form1">
 		<form (submit)="submit(form)" #form="ngForm">
-			<ng-container *ngFor="let todo of model.data; let i = index;">
-				<app-validation-message class="todo-item">
-					<app-todo  appInput #multiChildInput ngModel name="todoComponent" [todo]="todo" (onDelete)="deleteTodo(i, todo)" (onValueChange)="todoDataChange($event, i)"></app-todo>
-				</app-validation-message>
-			</ng-container>
 			<div class="actions">
 				<button (click)="addTodo($event)" class="actionButton">Add Todo</button>
 				<button type="submit"  class="actionButton" *ngIf="showAddButton">Save</button>
+			</div>
+			<div class="todolist" cdkDropList (cdkDropListDropped)="todoDragDrop($event)">
+				<div cdkDrag *ngFor="let todo of model.data; let i = index;">
+					<app-validation-message class="todo-item">
+						<div class="drag-placeholder" *cdkDragPlaceholder>hi there</div>
+						<app-todo appInput #todoItem ngModel name="todoComponent" [todo]="todo" (onDelete)="deleteTodo(i, todo)" (onValueChange)="todoDataChange($event, i)"></app-todo>
+					</app-validation-message>
+				</div>
 			</div>
 		</form>
 	</div>

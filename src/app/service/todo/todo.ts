@@ -6,4 +6,16 @@ export class TodoModel {
 	status!: todoStatus;
 }
 
-export type todoStatus = 'active' | 'completed' | 'pending' | 'hold' | 'rechecking';
+export enum TodoStatus {
+	'active' = 'active',
+	'completed' = 'completed',
+	'pending' = 'pending',
+	'hold' = 'hold',
+	'rechecking' = 'rechecking',
+}
+export type todoStatus = keyof typeof TodoStatus;
+
+export class TodoListFilterModel {
+	ignoreStatus?: TodoStatus[] = [TodoStatus.completed];
+	showStatus?: TodoStatus[] = [];
+}

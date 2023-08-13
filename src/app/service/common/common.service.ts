@@ -17,11 +17,13 @@ export class CommonService {
     if (!keys.length) return url;
     let str = url.includes('?') ? '&' : '?';
     keys.map(el => {
-      if(!obj[el]) return;
+			let value = obj[el];
+      if(!value) return;
+			if(Array.isArray(value)) value = value.join('');
       if (!str.endsWith('?')) str += '&';
       str += el;
       str += '=';
-      str += obj[ el ];
+      str += value;
     });
     let finalStr = ['?', '&'].some(el => el == str) ? '' : str;
 		return url + finalStr;

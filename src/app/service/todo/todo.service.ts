@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
-import { TodoModel, todoStatus } from './todo';
+import { TodoListFilterModel, TodoModel, todoStatus } from './todo';
 import { BehaviorSubject, of } from 'rxjs';
 import { Response, ResponseDataList } from '../common/response';
 import {HttpClient} from '@angular/common/http';
+import { CommonService } from '../common/common.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
   constructor(
-		private http: HttpClient
+		private http: HttpClient,
+		private common: CommonService,
 	) { }
 
 	editMode$ = new BehaviorSubject(false);
@@ -21,8 +23,9 @@ export class TodoService {
 		}
 	});
 
-	getTodoList() {
-		return this.http.get<ResponseDataList<TodoModel>>('/todo/list');
+
+	getTodoList(filter: TodoListFilterModel) {
+		return this.http.get<ResponseDataList<TodoModel>>(this.common.getQueryStrings('/todo/list', filter));
 	}
 
 	createTodoList(payload: TodoModel[]) {

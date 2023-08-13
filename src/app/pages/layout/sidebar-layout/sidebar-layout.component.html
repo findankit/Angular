@@ -3,14 +3,15 @@
 		<div *ngIf="toggleMenu$.value">
 			<mat-icon class="openSidebar action" (click)="toggleMenu()">close</mat-icon>
 		</div>
-		<hr>	
+		<hr>
 		<nav>
 			<div *ngFor="let item of sidebarMenuItems">
 				<app-nav-dropdown [option]="item" (click)="menuItemClick(item)" #navdropdown></app-nav-dropdown>
 			</div>
 		</nav>
-  </mat-drawer>
-	<mat-drawer-content [ngStyle]="{'background-image': 'url(\''+backgroundImage+'\')'}">
+	</mat-drawer>
+	<mat-drawer-content
+		[ngStyle]="{'background-image': 'url(\''+(backgroundImage?.startsWith('http') ? backgroundImage : 'assets/background/'+backgroundImage)+'\')'}">
 		<div class="dull">
 			<div *ngIf="!toggleMenu$.value">
 				<mat-icon class="openSidebar action" (click)="toggleMenu()">apps</mat-icon>

@@ -1,31 +1,41 @@
 <form #form="ngForm" [class.non-editable]="!isEditing" (keydown.enter)="update(form)">
-	<div>
+	<div class="actions">
 		<app-table-actions (onDelete)="delete($event)" (onUpdate)="toggleEdit()" (onSave)="update(form)" [isEditing]="isEditing" [data]="todo"></app-table-actions>
 	</div>
-	<div>
-		<label>Todo</label>
-		<app-validation-message *ngIf="isEditing; else todoname;">
-			<input #inputelement type="text" placeholder="todo" [(ngModel)]="todo.todo" name="todo" appInput required>
-		</app-validation-message>
-		<ng-template #todoname>
-			<span class="placeholder" (click)="toggleEdit()">
-				{{todo.todo || 'n/a'}}
-			</span>
-		</ng-template>
-	</div>
-	<div>
-		<label>Status</label>
-		<app-validation-message *ngIf="isEditing; else statusvalue;">
-			<select #inputelement [(ngModel)]="todo.status" name="status" required>
-				<ng-container *ngFor="let option of todoOptions">
-					<option [value]="option.status">{{option.status}}</option>
-				</ng-container>
-			</select>
-		</app-validation-message>
-		<ng-template #statusvalue>
-			<span class="placeholder" (click)="toggleEdit()">
-				{{todo.status || 'n/a'}}
-			</span>
-		</ng-template>
+	<div class="data">
+		<div class="item" [title]="todo.todo">
+			<div class="label">
+				<label>Todo</label>
+			</div>
+			<div class="value">
+				<app-validation-message *ngIf="isEditing; else todoname;">
+					<input #inputelement type="text" placeholder="todo" [(ngModel)]="todo.todo" name="todo" appInput required>
+				</app-validation-message>
+				<ng-template #todoname>
+					<span class="placeholder" (click)="toggleEdit()">
+						{{todo.todo || 'n/a'}}
+					</span>
+				</ng-template>
+			</div>
+		</div>
+		<div class="item">
+			<div class="label">
+				<label>Status</label>
+			</div>
+			<div class="value">
+				<app-validation-message *ngIf="isEditing; else statusvalue;">
+					<select #inputelement [(ngModel)]="todo.status" name="status" required>
+						<ng-container *ngFor="let option of todoOptions">
+							<option [value]="option.status">{{option.status}}</option>
+						</ng-container>
+					</select>
+				</app-validation-message>
+				<ng-template #statusvalue>
+					<span class="placeholder" (click)="toggleEdit()">
+						{{todo.status || 'n/a'}}
+					</span>
+				</ng-template>
+			</div>
+		</div>
 	</div>
 </form>

@@ -10,6 +10,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { TodoCategoryComponent } from './todo-category/todo-category.component';
 import { CoreModule } from '../core/core.module';
 import { ComponentModule } from '../component/component.module';
+import {MatSelectModule} from '@angular/material/select';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { ComponentModule } from '../component/component.module';
 		UtilsModule,
 		MatIconModule,
 		CoreModule,
-		ComponentModule
+		ComponentModule,
+		MatSelectModule,
+		DragDropModule,
   ]
 })
 export class TodoModule { }
