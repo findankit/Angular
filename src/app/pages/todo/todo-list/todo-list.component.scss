@@ -30,27 +30,20 @@
 
 
 .drag-placeholder {
-	border: 2px solid red;
+	border: 1px dashed gray;
+	padding: 10px;
+	color: gray;
 }
 .parent {
 	.todo-item {
 		display: block;
 		transition: 0.3s;
 		border-radius: 10px;
-	}
-
-	.todo-item:nth-child(odd) {
-		background: rgba(128, 128, 128, 0.241);
+		background: rgba(255, 255, 255, 0.438);
+		cursor: pointer;
 		&:hover {
-			box-shadow: 0 0 10px rgba(255, 255, 255, 0.501) inset;
+			// box-shadow: 0 0 10px rgba(255, 255, 255, 0.501) inset;
+			background: white;
 		}
 	}
-
-	.todo-item:nth-child(even) {
-		background: rgba(128, 128, 128, 0.036);
-		&:hover {
-			box-shadow: 0 0 10px rgba(0, 0, 0, 0.107) inset;
-		}
-	}
-
 }

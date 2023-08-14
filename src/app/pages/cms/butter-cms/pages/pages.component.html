@@ -28,8 +28,8 @@
 							<h4>Reply</h4>
 						</div>
 						<div class="content-details">
-							<p>{{faqItem.body}}</p>
-
+							<!-- <p>{{faqItem.body}}</p> -->
+							<div [innerHTML]="faqItem.body"></div>
 
 							<div class="image-box">
 								<div class="image">

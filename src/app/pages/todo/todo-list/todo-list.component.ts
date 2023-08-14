@@ -12,7 +12,7 @@ import { LayoutService } from 'src/app/service/layout/layout.service';
 import { CategoryService } from 'src/app/service/todo/category.service';
 import { CategoryModel } from 'src/app/service/todo/category';
 import { CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray } from '@angular/cdk/drag-drop';
-import {NgFor} from '@angular/common';
+import { NgFor } from '@angular/common';
 
 @Component({
 	selector: 'app-todo-list',
@@ -40,6 +40,7 @@ export class TodoListComponent {
 	previousFilter: string = '';
 
 	categoryList: CategoryModel[] = [];
+	totalFilters = Object.keys(TodoStatus).length;
 
 
 	ngOnInit() {
@@ -49,9 +50,11 @@ export class TodoListComponent {
 
 	ngDoCheck() {
 		let newFilter = JSON.stringify(this.filter);
+		/* check filter */
 		if (this.previousFilter !== newFilter) {
 			this.previousFilter = newFilter;
 			this.getTodoList();
+			this.allStatusTodoFilter = this.totalFilters === this.filter.showStatus?.length;
 		}
 	}
 
@@ -113,6 +116,14 @@ export class TodoListComponent {
 	editTodos() {
 		this.service.editMode$.next(!this.service.editMode$.value);
 	}
+	allStatusTodoFilter = false;
+	toggleAllStatusTodoFilter() {
+		this.allStatusTodoFilter = !this.allStatusTodoFilter;
+		let statusList = this.allStatusTodoFilter ? Object.values(TodoStatus) : [];
+		this.filter.setShowStatus = statusList;
+
+	}
+
 
 	bulkUpdateObj: { [ key: number ]: TodoModel } = {};
 	todoDataChange(todo: TodoModel, i: number) {
@@ -120,8 +131,6 @@ export class TodoListComponent {
 	}
 
 	todoDragDrop(event: CdkDragDrop<string[]>) {
-		console.log(event);
-		
 		moveItemInArray(this.model.data, event.previousIndex, event.currentIndex);
 	}
 
