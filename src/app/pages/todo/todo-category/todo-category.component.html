@@ -1,8 +1,8 @@
 <h3>Categories</h3>
 <button (click)="showModal = true;">Add Category</button>
 <app-table [data]="model.data" (onDelete)="deleting($event)" [config]="tableConfig">
-	<th class="head">abc</th>
-	<td class="col">def</td>
+	<!-- <th class="head">abc</th>
+	<td class="col">def</td> -->
 </app-table>
 
 <app-vanilla-modal [showModal]="showModal" (onCancel)="showModal = false;" label="Add category!">
@@ -15,13 +15,16 @@
 				</div>
 			</div>
 			<div class="form-parent width-per-100">
-				<form class="flex fl-fl-col gap-5 width-per-100 height-child-input-36" #form="ngForm" (submit)="createCategory(form)">
-					<div class="inputs flex gap-10 flex-wrap" >
+				<form class="flex fl-fl-col gap-5 width-per-100 height-child-input-36" #form="ngForm"
+					(submit)="createCategory(form)">
+					<div class="inputs flex gap-10 flex-wrap">
 						<app-validation-message class="width-per-45">
-							<input type="text" name="category" [(ngModel)]="category.name" class="width-per-100" placeholder="Category Name" required>
+							<input type="text" name="category" [(ngModel)]="category.name" class="width-per-100"
+								placeholder="Category Name" required>
 						</app-validation-message>
 						<app-validation-message class=" width-per-45" *ngIf="model.data.length && !isCreatingParent">
-							<app-ng-select class="" [(ngModel)]="category.parent" name="parent" placeholder="Parent Category" [options]="model.data"></app-ng-select>
+							<app-ng-select class="" [(ngModel)]="category.parent" name="parent" placeholder="Parent Category"
+								[options]="model.data"></app-ng-select>
 						</app-validation-message>
 					</div>
 					<div class="center">

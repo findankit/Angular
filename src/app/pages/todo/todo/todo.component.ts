@@ -3,6 +3,7 @@ import { NG_VALUE_ACCESSOR, NgForm } from '@angular/forms';
 import { BaseControlValueAccessor } from 'src/app/service/accessor/baseaccessor';
 import { validateNgForm } from 'src/app/service/common/ng-form';
 import { TodoModel } from 'src/app/service/forms/add-new-form/add-new-form';
+import { CategoryService } from 'src/app/service/todo/category.service';
 import { TodoService } from 'src/app/service/todo/todo.service';
 
 @Component({
@@ -29,6 +30,7 @@ export class TodoComponent extends BaseControlValueAccessor<TodoModel> {
 
 	constructor(
 		private service: TodoService,
+		private categoryService: CategoryService,
 	) {super()}
 	
 	ngOnInit() {

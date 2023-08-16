@@ -28,9 +28,10 @@ export class TodoCategoryComponent {
 			this.layoutService.hideMenu();
 		}
 		else if (this.defaultShowMenuFlag) this.layoutService.showMenu();
-
 		this._showModal = value;
 	}
+	color = '';
+	
 
 	constructor(
 		private service: CategoryService,

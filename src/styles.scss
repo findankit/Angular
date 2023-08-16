@@ -1,4 +1,5 @@
 @import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
 @import "~@ng-select/ng-select/themes/default.theme.css";
 @import "./assets/style/width-height.scss";
 @import "./assets/style/spacing.scss";
@@ -88,4 +89,8 @@ input.ng-invalid.ng-touched {
 
 	border-color: rgba(255, 0, 0, 0.482) !important;
 	// border: 1px solid red;
+}
+
+.mat-mdc-form-field-bottom-align {
+	height: 0;
 }

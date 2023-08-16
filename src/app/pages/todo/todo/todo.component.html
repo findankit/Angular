@@ -1,6 +1,7 @@
 <form #form="ngForm" [class.non-editable]="!isEditing" (keydown.enter)="update(form)">
 	<div class="actions">
-		<app-table-actions (onDelete)="delete($event)" (onUpdate)="toggleEdit()" (onSave)="update(form)" [isEditing]="isEditing" [data]="todo"></app-table-actions>
+		<app-table-actions (onDelete)="delete($event)" (onUpdate)="toggleEdit()" (onSave)="update(form)"
+			[isEditing]="isEditing" [data]="todo"></app-table-actions>
 	</div>
 	<div class="data">
 		<div class="item" [title]="todo.todo">
@@ -24,11 +25,22 @@
 			</div>
 			<div class="value">
 				<app-validation-message *ngIf="isEditing; else statusvalue;">
-					<select #inputelement [(ngModel)]="todo.status" name="status" required>
-						<ng-container *ngFor="let option of todoOptions">
-							<option [value]="option.status">{{option.status}}</option>
-						</ng-container>
-					</select>
+					<app-select [(ngModel)]="todo.status" name="todo-status" [dataItems]="todoOptions" keyName="status" valueName="status" label="Todo Status"></app-select>
+				</app-validation-message>
+				<ng-template #statusvalue>
+					<span class="placeholder" (click)="toggleEdit()">
+						{{todo.status || 'n/a'}}
+					</span>
+				</ng-template>
+			</div>
+		</div>
+		<div class="item">
+			<div class="label">
+				<label>Category</label>
+			</div>
+			<div class="value">
+				<app-validation-message *ngIf="isEditing; else statusvalue;">
+					<app-select [(ngModel)]="todo.status" name="todo-status" [dataItems]="todoOptions" keyName="status" valueName="status" label="Todo Status"></app-select>
 				</app-validation-message>
 				<ng-template #statusvalue>
 					<span class="placeholder" (click)="toggleEdit()">

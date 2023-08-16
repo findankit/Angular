@@ -13,6 +13,7 @@ import { CategoryService } from 'src/app/service/todo/category.service';
 import { CategoryModel } from 'src/app/service/todo/category';
 import { CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray } from '@angular/cdk/drag-drop';
 import { NgFor } from '@angular/common';
+import { TableConfig } from '../../core/table/table/table.component';
 
 @Component({
 	selector: 'app-todo-list',
@@ -20,7 +21,6 @@ import { NgFor } from '@angular/common';
 	styleUrls: [ './todo-list.component.scss' ],
 })
 export class TodoListComponent {
-
 	get showAddButton() {
 		return Object.keys(this.bulkUpdateObj).length || this.model.data.some(el => !el._id)
 	}
