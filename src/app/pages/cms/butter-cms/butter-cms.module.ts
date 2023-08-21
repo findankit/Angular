@@ -5,12 +5,14 @@ import { ButterCmsRoutingModule } from './butter-cms-routing.module';
 import { LandingComponent } from './landing/landing.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PagesComponent } from './pages/pages.component';
+import { RoughComponent } from './rough/rough.component';
 
 
 @NgModule({
   declarations: [
     LandingComponent,
-    PagesComponent
+    PagesComponent,
+    RoughComponent
   ],
   imports: [
     CommonModule,

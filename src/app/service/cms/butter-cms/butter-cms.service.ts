@@ -23,8 +23,8 @@ export class ButterCmsService {
 		return `${this.env.baseUrl}` + path;
 	}
 
-	getPageBySlug(pageName: ButterPageTypes) {
-		let pageType = pageTypeOfPage[pageName];
+	getPageBySlug(pageName: string, type?: string) {
+		let pageType = type || pageTypeOfPage[pageName as ButterPageTypes] || '*';
 		return this.http.get<{ data: ButterPagesModel<any> }>(this.url(`pages/${pageType}/${pageName}`));
 	}
 
