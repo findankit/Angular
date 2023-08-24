@@ -27,6 +27,10 @@ const routes: Routes = [
 				path: 'cms',
 				loadChildren: () => import('./pages/cms/cms.module').then(m => m.CmsModule)
 			},
+			{
+				path: 'video-player',
+				loadChildren: () => import('./pages/video-player/video-player.module').then(m => m.VideoPlayerModule)
+			},
 		]
 	},
 ];

@@ -22,9 +22,16 @@ export class UrlPrefixInterceptor implements HttpInterceptor {
 				headers: request.headers.set('Authorization', 'Token ' + environment.cms.butter.token)
 			});
 			return handle();
-		} else if(request.url.startsWith('http') && request.url.includes('api.sanity.io')) {
+		} else if (request.url.startsWith('http') && request.url.includes('api.sanity.io')) {
 			request = request.clone({
 				headers: request.headers.set('Authorization', 'Bearer ' + environment.cms.sanityio.token)
+			});
+			return handle();
+		} else if (request.url.startsWith('__vimeo/')) {
+			let env = environment.player.vimeo;
+			request = request.clone({
+				headers: request.headers.set('Authorization', 'Bearer ' + env.accessToken),
+				url: request.url.replace('__vimeo/', env.baseUrl),
 			});
 			return handle();
 		}

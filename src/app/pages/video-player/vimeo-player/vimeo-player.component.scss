@@ -1,0 +1,70 @@
+@mixin bottom-left-label {
+	display: inline-block;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	padding: 10px;
+}
+
+.path {
+	padding: 10px;
+	background: white;
+	border-radius: 10px;
+	box-shadow: 0 0 5px rgba(128, 128, 128, 0.46) inset;
+}
+
+.folders {
+
+	display: flex;
+	gap: 20px;
+	padding: 10px;
+
+	.folder-items {
+		border: 1px solid gray;
+		border-radius: 10px;
+		width: 100px;
+		height: 100px;
+		position: relative;
+		cursor: pointer;
+		transition: 0.3s;
+
+		&:hover {
+			background: rgba(128, 128, 128, 0.17);
+		}
+
+		.folder,
+		.video {
+			@include bottom-left-label();
+			font-size: 0.6em;
+		}
+
+		.video {
+			width: 100%;
+			height: 100%;
+			padding: 0;
+			border-radius: 10px;
+
+			.overlay {
+				width: 100%;
+				height: 100%;
+				border-radius: 10px;
+				background: rgba(255, 255, 255, 0.521);
+				@include bottom-left-label();
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				position: relative;
+				div {
+					@include bottom-left-label();
+					width: 100%;
+					span {
+						display: block;
+						white-space: nowrap;
+						text-overflow: ellipsis;
+						max-width: 100%;
+						overflow: hidden;
+					}
+				}
+			}
+		}
+	}
+}

@@ -12,7 +12,7 @@ export class TodoService {
   constructor(
 		private http: HttpClient,
 		private common: CommonService,
-	) { }
+	) {}
 
 	editMode$ = new BehaviorSubject(false);
 

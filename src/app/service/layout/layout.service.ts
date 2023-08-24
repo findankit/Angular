@@ -44,6 +44,12 @@ export class LayoutService {
 				[ 'Butter CMS', '/cms/butter-cms/landing'],
 				[ 'Sanity.io', '/cms/sanityio-cms/landing'],
 			]
+		},
+		{
+			name: 'Video Players',
+			child: [
+				['Vimeo', '/video-player/vimeo'],
+			]
 		}
 	]
 }

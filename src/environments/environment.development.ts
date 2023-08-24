@@ -14,5 +14,11 @@ export const environment = {
 			app: 'l1ey8k4t',
 			dataset: 'production',
 		}
+	},
+	player: {
+		vimeo: {
+			accessToken: '7a3c44c4faf33b27a65548a108937b65',
+			baseUrl: 'https://api.vimeo.com/',
+		}
 	}
 };
