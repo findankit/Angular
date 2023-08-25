@@ -1,14 +1,3 @@
-<div class="path">
-	/
-	<span class="folder-name" *ngFor="let path of folderPath; let i = index;">
-		<span>
-			<span class="prefix" *ngIf="i > 0"> / </span>
-			{{path.name}}
-		</span>
-	</span>
-	<span *ngIf="folderPath.length">/</span>
-</div>
-
 <div class="folders" *ngIf="currentView == 'folder'">
 	<div class="folder-items" *ngFor="let item of foldersModel"
 		(click)="item.type=='video' ? setVideoPath(item) : setFolderPath(item)">
@@ -29,6 +18,3 @@
 		</div>
 	</div>
 </div>
-<!-- <div *ngIf="currentView == 'video'">
-	<app-vimeo-video-player [videoData]="currentVideo"></app-vimeo-video-player>
-</div> -->

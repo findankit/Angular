@@ -17,7 +17,7 @@ export class VimeoService {
 
 	model = new VimeoUserModel();
 	endpoints = new Connections();
-	folderPath$ = new BehaviorSubject<(VimeoFolderMeta|VimeoVideoMeta)[]>([]);
+	// folderPath$ = new BehaviorSubject<(VimeoFolderMeta|VimeoVideoMeta)[]>([]);
 
 	/* Get user details */
 	// getVimeoUser(): Promise<any> | void {

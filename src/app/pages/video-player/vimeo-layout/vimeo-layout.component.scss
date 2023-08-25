@@ -1,0 +1,26 @@
+@mixin bottom-left-label {
+	display: inline-block;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	padding: 10px;
+}
+
+.path {
+	padding: 10px;
+	background: white;
+	color: gray;
+	border-radius: 10px;
+	box-shadow: 0 0 5px rgba(128, 128, 128, 0.46) inset;
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	transition: 0.3s;
+	.item {
+		&:hover {
+			text-decoration: underline;
+			cursor: pointer;
+			color: black;
+		}
+	}
+}

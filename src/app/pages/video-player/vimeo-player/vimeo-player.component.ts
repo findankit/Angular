@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { VimeoFolderPathService } from 'src/app/service/video-player/vimeo/vimeo-folder-path.service';
 import { VimeoItemsModel, Paginated, VimeoFolderMeta, VimeoService, VimeoVideoMeta } from 'src/app/service/video-player/vimeo/vimeo.service';
 
 @Component({
@@ -13,10 +14,11 @@ export class VimeoPlayerComponent {
 		private service: VimeoService,
 		private router: Router,
 		private ar: ActivatedRoute,
+		private vimeoFolderService: VimeoFolderPathService,
 	) { }
 
 	foldersModel: VimeoItemsModel[] = [];
-	folderPath: (VimeoFolderMeta | VimeoVideoMeta)[] = [];
+	// folderPath: (VimeoFolderMeta | VimeoVideoMeta)[] = [];
 	currentView: 'folder' | 'video' = 'folder';
 	currentVideo?: VimeoVideoMeta;
 
@@ -31,11 +33,13 @@ export class VimeoPlayerComponent {
 	}
 
 	_ngOnInit() {
-		this.service.folderPath$.subscribe(data => {
+		this.vimeoFolderService.folderPath$.subscribe(data => {
+			debugger;
 			if (this.currentView == 'video') {
-				return;
+				// return;
 			}
-			this.folderPath = data;
+			// this.folderPath = data;
+			// this.vimeoFolderService.folderPath$.next(data);
 			if (!data.length) {
 				this.getRootFolders();
 			} else {
@@ -61,16 +65,16 @@ export class VimeoPlayerComponent {
 
 	setFolderPath(folder: VimeoItemsModel | null, index?: number) {
 		this.currentView = 'folder';
-		let curr = this.service.folderPath$.value;
+		let curr = this.vimeoFolderService.folderPath$.value;
 		!index ? (folder?.folder ? curr.push(folder?.folder) : curr) : curr.splice(index || 0);
-		this.service.folderPath$.next(curr);
+		this.vimeoFolderService.folderPath$.next(curr);
 	}
 	setVideoPath(video: VimeoItemsModel | null) {
-		// this.currentView = 'video';
-		// let curr = this.service.folderPath$.value;
-		// video?.video ? curr.push(video?.video) : null;
-		// this.currentVideo = video?.video;
-		// this.service.folderPath$.next(curr);
+		this.currentView = 'video';
+		let curr = this.vimeoFolderService.folderPath$.value;
+		video?.video ? curr.push(video?.video) : null;
+		this.currentVideo = video?.video;
+		this.vimeoFolderService.folderPath$.next(curr);
 		console.log(`sending data::`, video);
 		this.router.navigate(['../player'], {relativeTo: this.ar, state: {videoData: video?.video}})
 	}

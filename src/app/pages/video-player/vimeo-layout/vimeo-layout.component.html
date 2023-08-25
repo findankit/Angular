@@ -1,0 +1,16 @@
+<h2>Vimeo</h2>
+
+<div class="path">
+	<mat-icon class="openSidebar action item" (click)="navigateTo(null)">home</mat-icon>
+	/
+	<span class="folder-name" *ngFor="let path of folderPath$.value; let i = index;">
+		<span>
+			<span class="prefix" *ngIf="i > 0"> / </span>
+			<span class="item" (click)="navigateTo(i)">
+				{{path.name}}
+			</span>
+		</span>
+	</span>
+	<span *ngIf="folderPath$.value.length">/</span>
+</div>
+<router-outlet></router-outlet>
