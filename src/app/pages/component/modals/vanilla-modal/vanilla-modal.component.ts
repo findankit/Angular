@@ -15,10 +15,8 @@ export class VanillaModalComponent implements OnChanges {
 	) { }
 
 	ngOnInit() {
-		// debugger;
 	}
 	ngOnDestroy() {
-		// debugger;
 	}
 
 	ngOnChanges(changes: SimpleChanges) {

@@ -20,7 +20,6 @@ export class VimeoVideoPlayerComponent {
 		if (data) {
 			this.videoData = data;
 			this.videoId = parseInt(data.uri.split('/videos/').join(''));
-			debugger;
 		}
 		else location.back();
 	}

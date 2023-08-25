@@ -14,18 +14,15 @@ export class LayoutService {
 
 	toggleMenu() {
 		let value = !this.toggleMenu$.value;
-		// debugger;
 		localStorage.setItem('toggleMenu$', value.toString());
 		this.toggleMenu$.next(!this.toggleMenu$.value);
 	}
 	
 	hideMenu() {
-		// debugger;
 		localStorage.setItem('toggleMenu$', 'false');
 		this.toggleMenu$.next(false);
 	}
 	showMenu() {
-		// debugger;
 		localStorage.setItem('toggleMenu$', 'true');
 		this.toggleMenu$.next(true);
 	}

@@ -13,36 +13,14 @@ export class VimeoService {
 	) { }
 
 	private env = environment.player.vimeo;
-	vimeoUserId: number | null = null;
 
 	model = new VimeoUserModel();
 	endpoints = new Connections();
-	// folderPath$ = new BehaviorSubject<(VimeoFolderMeta|VimeoVideoMeta)[]>([]);
-
-	/* Get user details */
-	// getVimeoUser(): Promise<any> | void {
-	// 	if(this.model.userId()) return;
-	// 	return new Promise((resolve, reject) => {
-	// 		this.http.get<VimeoUserModel>('__vimeo/me').subscribe(data => {
-	// 			this.model = data;
-	// 			resolve(data);
-	// 		})
-	// 	});
-	// }
-	// getVimeoUser(cb: Function) {
-	// 	this.http.get<VimeoUserModel>('__vimeo/me').subscribe(data => {
-	// 		this.endpoints = data.metadata.connections;
-	// 		this.model = data;
-	// 		debugger;
-	// 		cb();
-	// 	});
-	// }
 
 	fetchVimeoUser() {
 		return this.http.get<VimeoUserModel>('__vimeo/me');
 	}
 
-	/* folders */
 	getVimeoData(url?: string) {
 		return this.http.get<Paginated<any>>(`__vimeo/${url || this.endpoints.folders.uri}`);
 	}

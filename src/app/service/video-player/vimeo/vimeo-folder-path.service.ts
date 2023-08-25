@@ -15,21 +15,8 @@ export class VimeoFolderPathService {
 	) { }
 
 	folderPath$ = new BehaviorSubject<(VimeoFolderMeta | VimeoVideoMeta)[]>([]);
+	vimeoItems$ = new BehaviorSubject<VimeoItemsModel[]>([]);
 
-	setFolderPath(folder: VimeoItemsModel | null, index?: number) {
-		let curr = this.folderPath$.value;
-		!index ? (folder?.folder ? curr.push(folder?.folder) : curr) : curr.splice(index || 0);
-		this.folderPath$.next(curr);
-	}
-	setVideoPath(video: VimeoItemsModel | null) {
-		// this.currentView = 'video';
-		// let curr = this.folderPath$.value;
-		// video?.video ? curr.push(video?.video) : null;
-		// this.currentVideo = video?.video;
-		// this.folderPath$.next(curr);
-		console.log(`sending data::`, video);
-		this.router.navigate([ '../player' ], { relativeTo: this.ar, state: { videoData: video?.video } })
-	}
 }
 
 

@@ -1,5 +1,10 @@
-<div class="folders" *ngIf="currentView == 'folder'">
-	<div class="folder-items" *ngFor="let item of foldersModel"
+
+<div *ngIf="!vimeoItems.length">
+	No folder or video found. ()
+</div>
+
+<div class="folders">
+	<div class="folder-items" *ngFor="let item of vimeoItems"
 		(click)="item.type=='video' ? setVideoPath(item) : setFolderPath(item)">
 		<div [title]="item.folder?.name" class="folder" *ngIf="item.type == 'folder'">
 			<span>

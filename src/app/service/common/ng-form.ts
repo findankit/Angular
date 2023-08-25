@@ -12,7 +12,6 @@ class Options {
 	stopOnError: boolean = false;
 }
 export function validateNgForm(form: NgForm | null, queryListArr?: QueryList<any>[]): Output {
-	// debugger;
 	let out = {invalid: false};
 
 	if(form) {
