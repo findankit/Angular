@@ -10,13 +10,20 @@ import { BehaviorSubject } from 'rxjs';
 export class VimeoFolderPathService {
 	constructor(
 		private service: VimeoService,
-		private router: Router,
-		private ar: ActivatedRoute,
+		private http: HttpClient,
 	) { }
 
 	folderPath$ = new BehaviorSubject<(VimeoFolderMeta | VimeoVideoMeta)[]>([]);
 	vimeoItems$ = new BehaviorSubject<VimeoItemsModel[]>([]);
 
+	createFolder(payload: VimeoCreateFolderModel) {
+		return this.http.post<any>(`__vimeo/users/${this.service.user_id}/projects`, payload)
+	}
 }
 
 
+
+export class VimeoCreateFolderModel {
+	name!: string;
+	parent_folder_uri!: string | null;
+}

@@ -16,6 +16,8 @@ export class VimeoService {
 
 	model = new VimeoUserModel();
 	endpoints = new Connections();
+	user_id: number | null = null;
+	
 
 	fetchVimeoUser() {
 		return this.http.get<VimeoUserModel>('__vimeo/me');

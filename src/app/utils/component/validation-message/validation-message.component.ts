@@ -34,8 +34,6 @@ export class ValidationMessageComponent{
 	}
 	
 	ngAfterContentInit() {
-		// console.log(`---.`, this.control);
-		
 		this.control.statusChanges?.subscribe(event => {
 			console.log(event);
 			

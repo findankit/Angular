@@ -1,6 +1,6 @@
 <mat-drawer-container class="example-container" [style.height]="height">
-	<mat-drawer #drawer class="example-sidenav" mode="side" [opened]="toggleMenu$.value">
-		<div *ngIf="toggleMenu$.value">
+	<mat-drawer #drawer class="example-sidenav" mode="side" [opened]="showMenu">
+		<div *ngIf="showMenu">
 			<mat-icon class="openSidebar action" (click)="toggleMenu()">close</mat-icon>
 		</div>
 		<hr>
@@ -13,7 +13,7 @@
 	<mat-drawer-content
 		[ngStyle]="{'background-image': 'url(\''+(backgroundImage?.startsWith('http') ? backgroundImage : 'assets/background/'+backgroundImage)+'\')'}">
 		<div class="dull">
-			<div *ngIf="!toggleMenu$.value">
+			<div *ngIf="!showMenu">
 				<mat-icon class="openSidebar action" (click)="toggleMenu()">apps</mat-icon>
 			</div>
 			<router-outlet></router-outlet>

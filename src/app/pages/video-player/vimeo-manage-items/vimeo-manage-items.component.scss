@@ -1,0 +1,47 @@
+.add-button {
+	width: 100px;
+	height: 100px;
+	border: 1px solid gray;
+	border-radius: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+	cursor: pointer;
+	transition: 0.3s;
+
+	&:hover {
+		background: rgba(128, 128, 128, 0.17);
+	}
+}
+
+.parent {
+	display: flex;
+	flex-flow: column;
+	gap: 20px;
+	.options {
+		span {
+			border: 1px solid gray;
+			padding: 5px 10px 5px 0;
+			border-radius: 10px;
+			label {
+				cursor: pointer;
+			}
+		}
+	}
+	
+	.forms {
+		form {
+			display: flex;
+			flex-flow: column;
+			gap: 10px;
+
+			input[type="text"] {
+				padding: 10px;
+				outline: none;
+				border: 1px solid gray;
+				border-radius: 10px;
+			}
+		}
+	}
+}

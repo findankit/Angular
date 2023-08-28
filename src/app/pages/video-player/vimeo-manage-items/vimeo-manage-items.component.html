@@ -1,0 +1,30 @@
+<div class="add-button" (click)="showModal = !showModal">
+	Add<br>More +
+</div>
+
+<app-vanilla-modal (onCancel)="showModal = false;" [showModal]="showModal" label="Add Vimeo Item">
+	<div class="parent">
+		<div class="options">
+			Add 
+			<span>
+				<input type="radio" id="folder-radio" name="option" value="folder" [(ngModel)]="addWhat">
+				<label for="folder-radio">Folder</label>
+			</span>
+			Or 
+			<span>
+				<input type="radio" id="video-radio" name="option" value="video" [(ngModel)]="addWhat">
+				<label for="video-radio">Video</label>
+			</span>
+			.
+		</div>
+		<div class="forms">
+			<form #form="ngForm" (submit)="createItem(form)">
+				<input type="text" name="folder-name" [(ngModel)]="folderModel.name">
+
+				<div>
+					<button type="submit">Create Folder</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</app-vanilla-modal>
