@@ -10,6 +10,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { VimeoManageItemsComponent } from './vimeo-manage-items/vimeo-manage-items.component';
 import { UtilsModule } from 'src/app/utils/utils.module';
 import { FormsModule } from '@angular/forms';
+import { VimeoItemComponent } from './vimeo-item/vimeo-item.component';
+import { TableModule } from '../core/table/table.module';
 
 
 @NgModule({
@@ -18,6 +20,7 @@ import { FormsModule } from '@angular/forms';
     VimeoVideoPlayerComponent,
     VimeoLayoutComponent,
     VimeoManageItemsComponent,
+    VimeoItemComponent,
   ],
   imports: [
     CommonModule,
@@ -26,6 +29,7 @@ import { FormsModule } from '@angular/forms';
 		MatIconModule,
 		UtilsModule,
 		FormsModule,
+		TableModule,
   ]
 })
 export class VideoPlayerModule { }

@@ -1,0 +1,24 @@
+<div class="folder-items">
+	<div class="item" *ngIf="vimeoItem.type == 'folder'" (click)="itemClick()">
+		<div [title]="vimeoItem.folder?.name" class="folder">
+			<span>
+				{{vimeoItem.folder?.name}}
+			</span>
+		</div>
+	</div>
+	<div class="item" *ngIf="vimeoItem.type == 'video'" (click)="itemClick('video')">
+		<div [title]="vimeoItem.video?.name" class="video" [ngStyle]="{backgroundImage: backgroundImg(vimeoItem?.video)}">
+			<div class="overlay">
+				<div>
+					<span>
+						{{vimeoItem.video?.name}}
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="actions">
+		<app-table-actions (onDelete)="''"></app-table-actions>
+	</div>
+</div>

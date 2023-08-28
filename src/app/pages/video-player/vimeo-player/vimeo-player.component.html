@@ -1,4 +1,3 @@
-
 <div *ngIf="!vimeoItems.length">
 	<div class="no-item">
 		No folder or video found
@@ -6,23 +5,9 @@
 </div>
 
 <div class="folders">
-	<div class="folder-items" *ngFor="let item of vimeoItems"
-		(click)="item.type=='video' ? setVideoPath(item) : setFolderPath(item)">
-		<div [title]="item.folder?.name" class="folder" *ngIf="item.type == 'folder'">
-			<span>
-				{{item.folder?.name}}
-			</span>
-		</div>
-		<div [title]="item.video?.name" class="video" *ngIf="item.type == 'video'"
-			[ngStyle]="{backgroundImage: backgroundImg(item?.video)}">
-			<div class="overlay">
-				<div>
-					<span>
-						{{item.video?.name}}
-					</span>
-				</div>
-			</div>
-		</div>
+	<div class="folder-items" *ngFor="let item of vimeoItems">
+		<app-vimeo-item [vimeoItem]="item" (onFolderClick)="setFolderPath(item)"
+			(onVideoClick)="setVideoPath(item)" (onDelete)="deleteItem(item)"></app-vimeo-item>
 	</div>
 	<div>
 		<router-outlet></router-outlet>

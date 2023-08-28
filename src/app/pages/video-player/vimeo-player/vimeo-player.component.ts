@@ -124,13 +124,14 @@ export class VimeoPlayerComponent {
 
 	log = console.log;
 
+	deleteItem(item: VimeoItemsModel) {
+		if(item.folder?.uri) this.vimeoFolderService.deleteFolder(item.folder.uri).subscribe(data => {
+			this.vimeoFolderService.folderPath$.next(this.vimeoFolderService.folderPath$.value);
+		})
+	}
+
 	ngOnDestroy() {
 		this.sink.unsubscribe();
 	}
 
-	backgroundImg(meta?: VimeoVideoMeta, size: number = 200) {
-		let perfectSize: any = meta?.pictures.sizes.filter(el => el.width <= size)[ 0 ];
-		if (!perfectSize) perfectSize = meta?.pictures.sizes.at(-1);
-		return `url('${perfectSize.link}')`;
-	}
 }

@@ -9,7 +9,7 @@ import { VimeoService } from 'src/app/service/video-player/vimeo/vimeo.service';
   styleUrls: ['./vimeo-manage-items.component.scss']
 })
 export class VimeoManageItemsComponent {
-	showModal = true;
+	showModal = false;
 	addWhat: 'folder' | 'video' = 'folder';
 
 	folderModel = new VimeoCreateFolderModel();

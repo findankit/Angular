@@ -19,6 +19,10 @@ export class VimeoFolderPathService {
 	createFolder(payload: VimeoCreateFolderModel) {
 		return this.http.post<any>(`__vimeo/users/${this.service.user_id}/projects`, payload)
 	}
+
+	deleteFolder(folderUri: string) {
+		return this.http.delete<any>(`__vimeo/${folderUri}`)
+	}
 }
 
 
