@@ -19,12 +19,23 @@
 		</div>
 		<div class="forms">
 			<form #form="ngForm" (submit)="createItem(form)">
+				<div *ngIf="addWhat === 'folder'; else videoForm">
+					<input type="text" name="folder-name" [(ngModel)]="folderModel.name" >
+				</div>
+				<ng-template #videoForm>
+					<input type="text">
+				</ng-template>
+				<div>
+					<button type="submit">Create Folder</button>
+				</div>
+			</form>
+			<!-- <form #form="ngForm" (submit)="createItem(form)">
 				<input type="text" name="folder-name" [(ngModel)]="folderModel.name">
 
 				<div>
 					<button type="submit">Create Folder</button>
 				</div>
-			</form>
+			</form> -->
 		</div>
 	</div>
 </app-vanilla-modal>

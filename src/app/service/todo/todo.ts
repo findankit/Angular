@@ -4,6 +4,7 @@ export class TodoModel {
 	todo!: string;
 	endDate?: Date | string;
 	status!: todoStatus;
+	category!: string;
 }
 
 export enum TodoStatus {

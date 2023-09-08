@@ -23,4 +23,8 @@ export class CategoryService {
 	deleteCategory(id: string) {
 		return this.http.delete<Response>('/todo-category/'+id)
 	}
+
+	getNestedCategories() {
+		return this.http.get<ResponseDataList<CategoryModel>>('/todo-category/nested')
+	}
 }

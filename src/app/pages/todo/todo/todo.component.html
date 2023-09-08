@@ -3,6 +3,7 @@
 		<app-table-actions (onDelete)="delete($event)" (onUpdate)="toggleEdit()" (onSave)="update(form)"
 			[isEditing]="isEditing" [data]="todo"></app-table-actions>
 	</div>
+
 	<div class="data">
 		<div class="item" [title]="todo.todo">
 			<div class="label">
@@ -19,13 +20,15 @@
 				</ng-template>
 			</div>
 		</div>
+
 		<div class="item">
 			<div class="label">
 				<label>Status</label>
 			</div>
 			<div class="value">
 				<app-validation-message *ngIf="isEditing; else statusvalue;">
-					<app-select [(ngModel)]="todo.status" name="todo-status" [dataItems]="todoOptions" keyName="status" valueName="status" label="Todo Status"></app-select>
+					<app-select [(ngModel)]="todo.status" name="todo-status" [dataItems]="todoOptions" keyName="status"
+						valueName="status" label="Todo Status"></app-select>
 				</app-validation-message>
 				<ng-template #statusvalue>
 					<span class="placeholder" (click)="toggleEdit()">
@@ -34,13 +37,15 @@
 				</ng-template>
 			</div>
 		</div>
+
 		<div class="item">
 			<div class="label">
 				<label>Category</label>
 			</div>
 			<div class="value">
 				<app-validation-message *ngIf="isEditing; else statusvalue;">
-					<app-select [(ngModel)]="todo.status" name="todo-status" [dataItems]="todoOptions" keyName="status" valueName="status" label="Todo Status"></app-select>
+					<app-select [(ngModel)]="todo.status" name="todo-status" [dataItems]="todoOptions" keyName="status"
+						valueName="status" label="Todo Status"></app-select>
 				</app-validation-message>
 				<ng-template #statusvalue>
 					<span class="placeholder" (click)="toggleEdit()">

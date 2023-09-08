@@ -2,8 +2,8 @@ import { Component, EventEmitter, Input, Output, ViewChild, forwardRef } from '@
 import { NG_VALUE_ACCESSOR, NgForm } from '@angular/forms';
 import { BaseControlValueAccessor } from 'src/app/service/accessor/baseaccessor';
 import { validateNgForm } from 'src/app/service/common/ng-form';
-import { TodoModel } from 'src/app/service/forms/add-new-form/add-new-form';
 import { CategoryService } from 'src/app/service/todo/category.service';
+import { TodoModel, TodoStatus } from 'src/app/service/todo/todo';
 import { TodoService } from 'src/app/service/todo/todo.service';
 
 @Component({
@@ -20,7 +20,7 @@ import { TodoService } from 'src/app/service/todo/todo.service';
 })
 export class TodoComponent extends BaseControlValueAccessor<TodoModel> {
 	@ViewChild('form') myform!: NgForm;
-	@Input() todo!: TodoModel;
+	@Input() todo = new TodoModel();
 	@Output() onDelete = new EventEmitter<any>;
 	@Output() onSave = new EventEmitter<any>;
 	@Output() onValueChange = new EventEmitter<TodoModel>;
@@ -85,4 +85,10 @@ export class TodoComponent extends BaseControlValueAccessor<TodoModel> {
 	}
 
 	todoOptions = this.service.todoStatusOptions;
+
+	getNestedCategory() {
+		this.categoryService.getNestedCategories().subscribe(data => {
+			
+		})
+	}
 }

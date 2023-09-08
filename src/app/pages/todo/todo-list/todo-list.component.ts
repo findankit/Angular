@@ -3,11 +3,9 @@ import { NgForm } from '@angular/forms';
 import { BehaviorSubject, catchError, of } from 'rxjs';
 import { validateNgForm } from 'src/app/service/common/ng-form';
 import { ResponseDataList } from 'src/app/service/common/response';
-import { TodoModel } from 'src/app/service/forms/add-new-form/add-new-form';
-import { AddNewFormService } from 'src/app/service/forms/add-new-form/add-new-form.service';
 import { TodoService } from 'src/app/service/todo/todo.service';
 import { TodoComponent } from '../todo/todo.component';
-import { TodoListFilterModel, TodoStatus } from 'src/app/service/todo/todo';
+import { TodoListFilterModel, TodoModel, TodoStatus } from 'src/app/service/todo/todo';
 import { LayoutService } from 'src/app/service/layout/layout.service';
 import { CategoryService } from 'src/app/service/todo/category.service';
 import { CategoryModel } from 'src/app/service/todo/category';
@@ -45,6 +43,7 @@ export class TodoListComponent {
 
 	ngOnInit() {
 		this.getTodoList();
+		this.getNesteCategory();
 		this.layoutServicef.backgroundImage$.next('todo-list-bg.jpg')
 	}
 
@@ -121,7 +120,14 @@ export class TodoListComponent {
 		this.allStatusTodoFilter = !this.allStatusTodoFilter;
 		let statusList = this.allStatusTodoFilter ? Object.values(TodoStatus) : [];
 		this.filter.setShowStatus = statusList;
+	}
 
+	categories = new ResponseDataList<CategoryModel>();
+	getNesteCategory() {
+		this.categoryService.getNestedCategories().subscribe(data => {
+			this.categories = data;
+			data.data
+		})
 	}
 
 

@@ -26,6 +26,10 @@ export class VimeoService {
 	getVimeoData(url?: string) {
 		return this.http.get<Paginated<any>>(`__vimeo/${url || this.endpoints.folders.uri}`);
 	}
+
+	uploadVideo() {
+		
+	}
 }
 
 
