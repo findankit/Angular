@@ -126,10 +126,9 @@ export class TodoListComponent {
 	getNesteCategory() {
 		this.categoryService.getNestedCategories().subscribe(data => {
 			this.categories = data;
-			data.data
-		})
+			this.categoryService.nestedCategory$.next(data);
+		});
 	}
-
 
 	bulkUpdateObj: { [ key: number ]: TodoModel } = {};
 	todoDataChange(todo: TodoModel, i: number) {

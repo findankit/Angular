@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { BehaviorSubject, of } from 'rxjs';
 import { Response, ResponseDataList } from '../common/response';
 import { CategoryModel } from './category';
 import { HttpClient } from '@angular/common/http';
@@ -11,6 +11,8 @@ export class CategoryService {
   constructor(
 		private http: HttpClient,
 	) { }
+
+	nestedCategory$ = new BehaviorSubject(new ResponseDataList<CategoryModel>());
 
 	getCategoryList() {
 		return this.http.get<ResponseDataList<CategoryModel>>('/todo-category/')

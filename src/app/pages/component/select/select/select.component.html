@@ -1,6 +1,6 @@
 <mat-form-field>
   <mat-label>{{label}}</mat-label>
-  <mat-select [(ngModel)]="value" (ngModelChange)="change($event)">
+  <mat-select [(ngModel)]="value" (valueChange)="change($event)">
     <mat-option *ngFor="let data of dataItems" [value]="data[valueName]">{{data[keyName]}}</mat-option>
   </mat-select>
 </mat-form-field>

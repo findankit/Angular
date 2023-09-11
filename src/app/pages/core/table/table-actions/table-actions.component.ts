@@ -1,10 +1,10 @@
 import { Component, ElementRef, EventEmitter, Input, Output } from '@angular/core';
 
-export type TableActions = 'delete' | 'update' | 'save' | 'view' | 'cancel';
-export type TableActionsLoose = 'd' | 'u' | 's' | 'v' | 'c' | TableActions;
+export type TableActions = 'delete' | 'update' | 'save' | 'view' | 'cancel' | 'info';
+export type TableActionsLoose = 'd' | 'u' | 's' | 'v' | 'c' | 'i' | TableActions;
 export class TableActionButtonConfig {
 	enableEditIconToggle: boolean = true;
-	buttons: TableActionsLoose[] = [ 'd', 'u', 's', 'v', 'c' ]; // initially all buttons are allowed to show, subscribe to respective events to make them visible
+	buttons: TableActionsLoose[] = [ 'd', 'u', 's', 'v', 'c', 'i' ]; // initially all buttons are allowed to show, subscribe to respective events to make them visible
 }
 
 @Component({
@@ -24,6 +24,7 @@ export class TableActionsComponent {
 	@Output() onView = new EventEmitter<any>;
 	@Output() onSubscribe = new EventEmitter<any>;
 	@Output() onCancel = new EventEmitter<any>;
+	@Output() onInfo = new EventEmitter<any>;
 
 	constructor(
 		private element: ElementRef,
@@ -36,6 +37,7 @@ export class TableActionsComponent {
 		'save': [ 's' ],
 		'view': [ 'v' ],
 		'cancel': [ 'c' ],
+		'info': [ 'i' ],
 	}
 
 	subscribed = false;
@@ -55,28 +57,29 @@ export class TableActionsComponent {
 	dispatch(eventname: string) {
 		this.element.nativeElement.dispatchEvent(new CustomEvent(eventname, {
 			bubbles: true,
-			detail: this.data
+			detail: this.data,
+			cancelable: true
 		}))
 	}
 
 	delete() {
-		// this.onDelete.emit(this.data);
 		this.dispatch('onDelete');
 	}
 
 	update() {
-		// this.onUpdate.emit(this.data);
 		this.dispatch('onUpdate');
 	}
 
 	save() {
-		// this.onSave.emit(this.data);
 		this.dispatch('onSave');
 	}
 
 	view() {
-		// this.onView.emit(this.data);
 		this.dispatch('onView');
+	}
+
+	info() {
+		this.dispatch('onInfo');
 	}
 
 	cancel() { this.dispatch('onCancel') }

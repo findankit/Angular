@@ -23,8 +23,7 @@ export class NgSelectComponent extends BaseControlValueAccessor<any> {
 
 	valueChange(event: any) {
 		console.log(event);
-		
-		this.value = event?.[this.bindValue] || null;
+		// this.value = event?.[this.bindValue] || null;
 		this.onChange(this.value);
 	}
 

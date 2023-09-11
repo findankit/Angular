@@ -1,9 +1,9 @@
 <form #form="ngForm" [class.non-editable]="!isEditing" (keydown.enter)="update(form)">
 	<div class="actions">
-		<app-table-actions (onDelete)="delete($event)" (onUpdate)="toggleEdit()" (onSave)="update(form)"
+		<app-table-actions (onDelete)="delete($event)" (onUpdate)="toggleEdit()" (onSave)="update(form)" (onInfo)="showInfo($event)"
 			[isEditing]="isEditing" [data]="todo"></app-table-actions>
 	</div>
-
+	{{showModal}}
 	<div class="data">
 		<div class="item" [title]="todo.todo">
 			<div class="label">
@@ -43,16 +43,17 @@
 				<label>Category</label>
 			</div>
 			<div class="value">
-				<app-validation-message *ngIf="isEditing; else statusvalue;">
-					<app-select [(ngModel)]="todo.status" name="todo-status" [dataItems]="todoOptions" keyName="status"
-						valueName="status" label="Todo Status"></app-select>
+				<app-validation-message *ngIf="isEditing; else categoryValue;">
+					<app-select-with-heading [(ngModel)]="todo.category" name="todo-category" [data]="nestedCategory.data" [child_key]="'child_categories'" [label]="'Category'"></app-select-with-heading>
 				</app-validation-message>
-				<ng-template #statusvalue>
+				<ng-template #categoryValue>
 					<span class="placeholder" (click)="toggleEdit()">
-						{{todo.status || 'n/a'}}
+						{{todo.category || 'n/a'}}
 					</span>
 				</ng-template>
 			</div>
 		</div>
 	</div>
 </form>
+
+<app-vanilla-modal [(ngModel)]="showModal" name="my-vanilla-model"></app-vanilla-modal>

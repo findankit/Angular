@@ -3,7 +3,7 @@ export class TodoModel {
 	_id: string | null = null;
 	todo!: string;
 	endDate?: Date | string;
-	status!: todoStatus;
+	status: todoStatus | null = null;
 	category!: string;
 }
 
@@ -19,6 +19,7 @@ export type todoStatus = keyof typeof TodoStatus;
 export class TodoListFilterModel {
 	ignoreStatus?: TodoStatus[] | string = [ TodoStatus.completed ];
 	showStatus?: TodoStatus[] | string = [];
+	category?: string;
 
 	/* constructor(obj?: TodoListQueryModel) {
 		if (obj) {

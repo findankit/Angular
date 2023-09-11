@@ -19,7 +19,7 @@ export class CommonService {
     keys.map(el => {
 			let value = obj[el];
       if(!value) return;
-			if(Array.isArray(value)) value = value.join('');
+			if(Array.isArray(value)) value = value.join(',');
       if (!str.endsWith('?')) str += '&';
       str += el;
       str += '=';

@@ -2,6 +2,8 @@ import { Component, EventEmitter, Input, Output, ViewChild, forwardRef } from '@
 import { NG_VALUE_ACCESSOR, NgForm } from '@angular/forms';
 import { BaseControlValueAccessor } from 'src/app/service/accessor/baseaccessor';
 import { validateNgForm } from 'src/app/service/common/ng-form';
+import { ResponseDataList } from 'src/app/service/common/response';
+import { CategoryModel } from 'src/app/service/todo/category';
 import { CategoryService } from 'src/app/service/todo/category.service';
 import { TodoModel, TodoStatus } from 'src/app/service/todo/todo';
 import { TodoService } from 'src/app/service/todo/todo.service';
@@ -27,6 +29,7 @@ export class TodoComponent extends BaseControlValueAccessor<TodoModel> {
 
 	editToggleCount = 1;
 	isEditing = false;
+	nestedCategory = new ResponseDataList<CategoryModel>();
 
 	constructor(
 		private service: TodoService,
@@ -41,6 +44,10 @@ export class TodoComponent extends BaseControlValueAccessor<TodoModel> {
 			}
 			this.editToggleCount++;
 			this.isEditing = event;
+		})
+
+		this.categoryService.nestedCategory$.subscribe(data => {
+			this.nestedCategory = data;
 		})
 	}
 
@@ -86,9 +93,9 @@ export class TodoComponent extends BaseControlValueAccessor<TodoModel> {
 
 	todoOptions = this.service.todoStatusOptions;
 
-	getNestedCategory() {
-		this.categoryService.getNestedCategories().subscribe(data => {
-			
-		})
+	showModal = false;
+	showInfo(event: CustomEvent<TodoModel>) {
+		console.log(event.detail);
+		this.showModal = true;
 	}
 }

@@ -5,13 +5,15 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { SelectComponent } from './select/select.component';
 import {MatSelectModule} from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
+import { SelectWithHeadingComponent } from './select-with-heading/select-with-heading.component';
 
 
 
 @NgModule({
   declarations: [
     NgSelectComponent,
-    SelectComponent
+    SelectComponent,
+    SelectWithHeadingComponent
   ],
   imports: [
     CommonModule,
@@ -22,6 +24,7 @@ import { FormsModule } from '@angular/forms';
   exports: [
 		NgSelectComponent,
 		SelectComponent,
+		SelectWithHeadingComponent,
   ],
 })
 export class SelectModule { }

@@ -1,0 +1,11 @@
+<mat-form-field>
+	<mat-label>{{label}}</mat-label>
+	<mat-select name="ITEMS" (valueChange)="change($event)" [ngModel]="value">
+		<mat-option>-- None --</mat-option>
+		<mat-optgroup *ngFor="let group of data" [label]="group.name">
+			<mat-option *ngFor="let child of group[child_key]" [value]="child[child_value_key]">
+				{{child[child_display_key]}}
+			</mat-option>
+		</mat-optgroup>
+	</mat-select>
+</mat-form-field>

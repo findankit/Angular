@@ -35,7 +35,7 @@ export class ValidationMessageComponent{
 	
 	ngAfterContentInit() {
 		this.control.statusChanges?.subscribe(event => {
-			console.log(event);
+			// console.log(event);
 			
 			let _e = this.control.errors;
 			let errors = Object.keys(_e || {});

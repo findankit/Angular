@@ -7,7 +7,8 @@ export class BaseControlValueAccessor<T> implements ControlValueAccessor {
   /**
    * Call when value has changed programatically
    */
-  public onChange(newVal: T) { }
+  public onChange(newVal: T) {
+	}
   public onTouched(_?: any) { }
 
   /**

@@ -15,19 +15,24 @@ import { BaseControlValueAccessor } from 'src/app/service/accessor/baseaccessor'
 		}
 	]
 })
-export class SelectComponent extends BaseControlValueAccessor<any> {
+export class SelectComponent extends BaseControlValueAccessor<string> {
 	@Input() label = '';
 	@Input() keyName = 'key';
 	@Input() valueName = 'value';
 	@Input() dataItems: { [ key: string ]: string }[] = [];
 
+	constructor() {
+		super();
+	}
+
 	ngAfterViewInit() {
-		console.log(this.dataItems);
 	}
 
 	change(value: any) {
-		console.log(`##~, `, value);
+		// if(!value) value = null;
 		this.value = value;
 		this.onChange(value);
 	}
+
+	log=console.log;
 }	
