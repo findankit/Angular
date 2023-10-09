@@ -13,6 +13,12 @@ export const environment = {
 			version: 'v2021-03-25',
 			app: 'l1ey8k4t',
 			dataset: 'production',
+		},
+		bigcommerce: {
+			client_id: 'e17bkx9d276aftnanoh4fdcddacyv24',
+			client_secret: '15bd3cf096a43fe28d22f011b9a558d7588f98a738490e541a00c2e2d2e2cde0',
+			access_token: 'i21jki7mi2vc5suabuf3ktc0gfzzfel',
+			endpoint: 'https://api.bigcommerce.com/stores/z00pcd2fty/v3/',
 		}
 	},
 	player: {

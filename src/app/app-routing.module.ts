@@ -27,6 +27,10 @@ const routes: Routes = [
 				path: 'video-player',
 				loadChildren: () => import('./pages/video-player/video-player.module').then(m => m.VideoPlayerModule)
 			},
+			{
+				path: 'ecomm',
+				loadChildren: () => import('./pages/ecomm/ecomm.module').then(m => m.EcommModule)
+			},
 		]
 	},
 ];

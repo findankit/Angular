@@ -7,6 +7,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { NavDropdownComponent } from './nav-dropdown/nav-dropdown.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -17,6 +18,7 @@ import { NavDropdownComponent } from './nav-dropdown/nav-dropdown.component';
     NavDropdownComponent
   ],
   imports: [
+		FormsModule,
     CommonModule,
 		RouterModule,
 		MatSidenavModule,

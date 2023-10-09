@@ -47,6 +47,36 @@ export class LayoutService {
 			child: [
 				['Vimeo', '/video-player/vimeo'],
 			]
+		},
+		{
+			name: 'E-Comm',
+			routerPath: '/eCom',
+			child: [
+				['POS', 'pos', {
+					// name: 'POS',
+					// routerPath: '/ecomm/pos',
+					child: [
+						['BigCommerce', '/eCom/pos/big-commerce', {
+							child: [
+								['Inventory', 'inventory']
+							]
+						}]
+					]
+				}],
+			]
+		},
+		{
+			name: 'Sockets',
+			routerPath: '/socket',
+			child: [
+				['Web Sockets', 'ws', {
+					child: [
+						['Node Debugger', 'Debug Node', {
+							
+						}]
+					]
+				}]
+			]
 		}
 	]
 }

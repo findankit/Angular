@@ -10,7 +10,9 @@ $g2: rgba(120, 120, 120, 0.726);
 $g3: rgb(120, 120, 120);
 
 .item {
-	margin-bottom: 2px;
+	.isParent {
+		margin-bottom: 2px;
+	}
 	.parent {
 		cursor: pointer;
 		.item-heading {
@@ -27,10 +29,12 @@ $g3: rgb(120, 120, 120);
 		}
 
 		.children {
+			>a {
+				color: white;
+			}
 			max-height: 0;
 			overflow: hidden;
 			transition: 0.3s;
-			color: white;
 			background: $c00;
 
 			.child-item {
