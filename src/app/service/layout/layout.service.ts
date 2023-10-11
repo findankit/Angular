@@ -58,7 +58,7 @@ export class LayoutService {
 					child: [
 						['BigCommerce', '/eCom/pos/big-commerce', {
 							child: [
-								['Inventory', 'inventory']
+								['Inventory', '/eCom/pos/big-commerce/inventory']
 							]
 						}]
 					]
@@ -67,13 +67,11 @@ export class LayoutService {
 		},
 		{
 			name: 'Sockets',
-			routerPath: '/socket',
+			// routerPath: '/sockets',
 			child: [
 				['Web Sockets', 'ws', {
 					child: [
-						['Node Debugger', 'Debug Node', {
-							
-						}]
+						['Node Debugger', '/sockets/ws/node-js-debug']
 					]
 				}]
 			]

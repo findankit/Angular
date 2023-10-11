@@ -31,6 +31,10 @@ const routes: Routes = [
 				path: 'ecomm',
 				loadChildren: () => import('./pages/ecomm/ecomm.module').then(m => m.EcommModule)
 			},
+			{
+				path: 'sockets',
+				loadChildren: () => import('./pages/sockets/sockets.module').then(m => m.SocketsModule)
+			}
 		]
 	},
 ];

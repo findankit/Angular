@@ -1,0 +1,26 @@
+<div>
+	<div class="label">
+		<h3>Details</h3>
+	</div>
+	<div class="input">
+		<label for="ws-url">Enter Websocket Url: </label>
+		<div class="field">
+			<input type="text" id="ws-url" name="ws-url" [(ngModel)]="ws_url">
+			<span *ngIf="url_error && !ws_url">{{url_error}}</span>
+		</div>
+		<button (click)="connect()">Connect</button>
+	</div>
+</div>
+
+<div class="message-list-parent">
+	<div class="label">
+		<h3>Messages</h3>
+	</div>
+	<div class="messages">
+		<div *ngFor="let message of messages">
+			<div class="message">
+				{{message}}
+			</div>
+		</div>
+	</div>
+</div>
