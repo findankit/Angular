@@ -34,7 +34,7 @@ const routes: Routes = [
 			{
 				path: 'sockets',
 				loadChildren: () => import('./pages/sockets/sockets.module').then(m => m.SocketsModule)
-			}
+			},
 		]
 	},
 ];

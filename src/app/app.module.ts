@@ -15,12 +15,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { ButterCmsModule } from './pages/cms/butter-cms/butter-cms.module';
 import { CmsModule } from './pages/cms/cms.module';
+import { RndTopicsComponent } from './pages/rnd-topics/rnd-topics.component';
 
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		ValidateInputComponent,
+  RndTopicsComponent,
 	],
 	imports: [
 		BrowserModule,
