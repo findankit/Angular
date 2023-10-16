@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { RndTopicService } from './rnd-topic.service';
+import { RndTopicItemService } from './rnd-topic-item.service';
 
-describe('RndTopicService', () => {
-  let service: RndTopicService;
+describe('RndTopicItemService', () => {
+  let service: RndTopicItemService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(RndTopicService);
+    service = TestBed.inject(RndTopicItemService);
   });
 
   it('should be created', () => {

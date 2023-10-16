@@ -1,0 +1,11 @@
+.topics {
+	app-rnd-topic-item {
+		display: flex;
+		border: 1px solid green;
+		gap: 20px;
+		// overflow: hidden;
+		>* {
+			border: 1px solid pink;
+		}
+	}
+}

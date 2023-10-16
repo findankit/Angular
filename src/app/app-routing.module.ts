@@ -35,6 +35,10 @@ const routes: Routes = [
 				path: 'sockets',
 				loadChildren: () => import('./pages/sockets/sockets.module').then(m => m.SocketsModule)
 			},
+			{
+				path: 'rnd',
+				loadChildren: () => import('./pages/rnd/rnd.module').then(m => m.RndModule)
+			},
 		]
 	},
 ];

@@ -1,0 +1,65 @@
+@mixin box($width) {
+  width: $width;
+  height: $width;
+}
+
+.topic-parent {
+  // font-size: 0.6em;
+  @include box(40px);
+  transition: 1s;
+  // border: 1px solid red;
+  position: relative;
+  border-bottom-right-radius: 100%;
+	cursor: pointer;
+	background: #EEEEEE;
+  &:hover {
+		@include box(100px);
+  }
+  .topic-parent-container {
+		border: 1px dashed red;
+		background: #EEEEEE;
+		
+		
+		.topic-name {
+			border: 1px dashed gray;
+			// background: gray;
+			@include box(40px);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border-radius: 100%;
+			position: static;
+			margin: 5px;
+			transition: 1s;
+			// overflow: hidden;
+		}
+
+    // .topic-child {
+    //   position: unset;
+    //   left: 100%;
+    //   top: 0;
+    //   // position: rela
+      // border: 3px solid purple;
+      .topic-parent {
+        position: relative;
+        left: 100%;
+        top: 0;
+        // border: 3px dashed gray;
+      }
+    // }
+
+    &:hover {
+      // width: 200px;
+      // height: 30px;
+      // border-radius: 10px;;
+    }
+  }
+}
+
+
+.topicNestedParent {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: -1;
+}

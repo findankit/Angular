@@ -6,23 +6,17 @@ import { AppComponent } from './app.component';
 import { ValidateInputComponent } from './helper/core/validate-input/validate-input.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UtilsModule } from './utils/utils.module';
-import { ComponentModule } from './pages/component/component.module';
 import { UrlPrefixInterceptor } from './utils/interceptor/url-prefix.interceptor';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
 import { LayoutModule } from './pages/layout/layout.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
-import { ButterCmsModule } from './pages/cms/butter-cms/butter-cms.module';
-import { CmsModule } from './pages/cms/cms.module';
-import { RndTopicsComponent } from './pages/rnd-topics/rnd-topics.component';
 
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		ValidateInputComponent,
-  RndTopicsComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -33,8 +27,6 @@ import { RndTopicsComponent } from './pages/rnd-topics/rnd-topics.component';
 		LayoutModule,
 		BrowserAnimationsModule,
 		MatIconModule,
-		// ButterCmsModule,
-		// CmsModule,
 	],
 	providers: [
     {
@@ -42,6 +34,7 @@ import { RndTopicsComponent } from './pages/rnd-topics/rnd-topics.component';
       useClass: UrlPrefixInterceptor,
       multi: true
     },
+		provideAnimations(),
 	],
 	bootstrap: [ AppComponent ]
 })

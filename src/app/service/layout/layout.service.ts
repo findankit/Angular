@@ -78,7 +78,9 @@ export class LayoutService {
 		},
 		{
 			name: 'R&D',
-			routerPath: 'rnd'
+			child: [
+				['Topics', '/rnd/topics']
+			]
 		}
 	]
 }

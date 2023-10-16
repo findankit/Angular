@@ -1,0 +1,43 @@
+.parent {
+	width: 300px;
+	height: 300px;
+	position: relative;
+	// z-index: 20;
+
+	>span {
+		padding: 10px 20px;
+		border: 1px solid gray;
+		background: rgb(207, 167, 167);
+		display: inline-block;
+	}
+
+	
+	.child-container {
+		border: 1px solid red;
+		padding: 10px;
+		position: absolute;
+		left: 100%;
+		top: 0;
+		width: 300px;
+		height: 300px;
+		z-index: -10;
+
+		.child {
+			position: absolute;
+			left: 0;
+			top: 0;
+
+			>span {
+				display: inline-block;
+				border: 1px solid gray;
+				background: rgba(66, 148, 19, 0.737);
+				padding: 10px 20px;
+			}
+		}
+	}
+
+
+	// .child {
+	// 	left: 0;
+	// }
+}

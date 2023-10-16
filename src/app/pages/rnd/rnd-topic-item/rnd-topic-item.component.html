@@ -1,0 +1,10 @@
+<ng-container *ngIf="iTopic.length">
+	<div *ngFor="let topic of (iTopic); let i = index;" class="topic-parent" [class.topicNestedParent]="isChild"
+		(mouseover)="showChild(true, i)" (mouseout)="showChild(false, i)" [ngStyle]="itemStyles[i]" class="{{topic.name}}">
+		{{log(topic.name, topic.options.css)}}
+		<div class="topic-parent-container">
+			<strong class="topic-name">{{topic.name}}</strong>
+			<app-rnd-topic-item [iTopic]="topic.child || []" [isChild]="true" [parentHovered]="hovered[i]"></app-rnd-topic-item>
+		</div>
+	</div>
+</ng-container>

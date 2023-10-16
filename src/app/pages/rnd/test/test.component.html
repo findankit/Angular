@@ -1,0 +1,19 @@
+<!-- 
+<div class="parent" (mouseover)="state='hideSlowly'">
+	<span (mouseover)="state='show'" (mouseout)="state='hide'">Parent</span>
+	<div [@options]="state" class="child-container" >
+		<div class="child"><span>child1</span></div>
+		<div class="child"><span>child2</span></div>
+	</div>
+</div> -->
+
+<!-- {{state}} -->
+
+
+<div class="parent" (mouseover)="state='hideSlowly'; log('parent hover');">
+	<span (mouseover)="state='show'; log('child hover')" (mouseout)="state='hide'">Parent</span>
+	<div [@options]="state" class="child-container" >
+		<div class="child"><span>child1</span></div>
+		<div class="child"><span>child2</span></div>
+	</div>
+</div>
