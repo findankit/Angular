@@ -11,6 +11,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LayoutModule } from './pages/layout/layout.module';
 import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
+import {provideClientHydration} from '@angular/platform-browser';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { MatIconModule } from '@angular/material/icon';
       multi: true
     },
 		provideAnimations(),
+		provideClientHydration(),
 	],
 	bootstrap: [ AppComponent ]
 })

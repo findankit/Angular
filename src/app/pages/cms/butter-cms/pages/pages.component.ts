@@ -25,7 +25,6 @@ export class PagesComponent {
 	faqModel = new ButterFAQPageModel();
 	faqListModel = new ButterPagination<GetBlogPostModel>();
 
-	sanitizeHtml = this.common.sanitizeHtml;
 
 	ngOnInit(): void {
 		this.router.paramMap.subscribe(evt => {
